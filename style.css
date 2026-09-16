@@ -1,0 +1,795 @@
+/* ==========================================================================
+   BOSCH DESIGN SYSTEM - EXECUTIVE VISIT PORTFOLIO (RESPONSIVE FULL-MOBILE)
+   ========================================================================== */
+
+:root {
+  --bosch-black: #1f1f1f;
+  --bosch-red: #ea0016;
+  --bosch-blue: #007bc0;
+  --bosch-blue-light: #eff5f9;
+  --bosch-blue-dark: #005a9c;
+  --bosch-gray-light: #f0f4f8;
+  --bosch-gray-bg: #f9fbfd;
+  --bosch-gray-border: #d7e1e6;
+  --bosch-gray-text: #5c6670;
+  --bosch-white: #ffffff;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Bosch Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bosch-gray-light);
+  color: var(--bosch-black);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* --- HEADER & SUPERGRAPHIC --- */
+.frontend-kit__header {
+  background-color: var(--bosch-white);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.o-minimal-header__supergraphic {
+  width: 100%;
+  height: 4px;
+  background-image: url('assent/img/super.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.o-minimal-header__top {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  padding: 0.75rem 2.5rem;
+}
+
+.o-minimal-header__logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* CONTROLES DO CABEÇALHO */
+.o-minimal-header__controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.home-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  color: var(--bosch-blue);
+  border: 1px solid var(--bosch-blue);
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.home-button:hover {
+  background-color: var(--bosch-blue);
+  color: var(--bosch-white);
+}
+
+/* BOTÃO MENU HAMBÚRGUER */
+.o-minimal-header__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.o-minimal-header__toggle:hover,
+.o-minimal-header__toggle:focus {
+  background-color: var(--bosch-blue-light);
+  border-color: var(--bosch-gray-border);
+  outline: none;
+}
+
+.o-minimal-header__toggle.is-active {
+  background-color: var(--bosch-blue-light);
+  border-color: var(--bosch-blue);
+}
+
+.hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 22px;
+  height: 15px;
+}
+
+.hamburger-bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--bosch-black);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.o-minimal-header__toggle:hover .hamburger-bar {
+  background-color: var(--bosch-blue);
+}
+
+.o-minimal-header__toggle.is-active .hamburger-bar:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+
+.o-minimal-header__toggle.is-active .hamburger-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.o-minimal-header__toggle.is-active .hamburger-bar:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* DROPDOWN MENU */
+.o-minimal-header__actions {
+  list-style: none;
+  margin: 0;
+  padding: 0.75rem 1rem;
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 2.5rem;
+  background-color: var(--bosch-white);
+  border: 1px solid var(--bosch-gray-border);
+  border-radius: 4px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 230px;
+  gap: 0.35rem;
+  z-index: 1001;
+}
+
+.o-minimal-header__actions.is-open {
+  display: flex;
+  animation: fadeInDown 0.2s ease forwards;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.frontend-kit__header__link {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: var(--bosch-black);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.frontend-kit__header__link:hover {
+  background-color: var(--bosch-blue-light);
+  color: var(--bosch-blue);
+}
+
+.frontend-kit__header__link.-header-active {
+  color: var(--bosch-blue);
+  background-color: var(--bosch-blue-light);
+}
+
+.brand-selection {
+  font-weight: bold;
+  font-size: 0.85rem;
+  color: var(--bosch-gray-text);
+  border-top: 1px solid var(--bosch-gray-border);
+  padding: 0.75rem 1rem 0.25rem 1rem;
+  margin-top: 0.25rem;
+}
+
+/* --- BANNER --- */
+.executive-banner {
+  position: relative;
+  background-color: var(--bosch-black);
+  color: var(--bosch-white);
+  padding: 4rem 2.5rem;
+  text-align: center;
+}
+
+.executive-banner__overlay {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, rgba(31, 31, 31, 0.95) 0%, rgba(31, 31, 31, 0.4) 100%);
+}
+
+.executive-banner__content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.executive-banner__tag {
+  background-color: var(--bosch-blue);
+  color: var(--bosch-white);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.35rem 0.75rem;
+  letter-spacing: 0.05em;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+.executive-banner h1 {
+  font-size: 2.8rem;
+  margin: 0 0 1rem 0;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.executive-banner p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--bosch-gray-light);
+  margin: 0;
+}
+
+/* --- SEÇÕES E CONTEÚDO --- */
+.main-content {
+  padding: 1rem 0 3rem 0;
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem;
+  width: 100%;
+}
+
+.bg-white {
+  background-color: var(--bosch-white);
+  border-top: 1px solid var(--bosch-gray-border);
+  border-bottom: 1px solid var(--bosch-gray-border);
+}
+
+.section-title { margin-bottom: 2.5rem; }
+.section-title h2 { font-size: 2rem; margin: 0 0 0.5rem 0; font-weight: 700; }
+.section-title p { color: var(--bosch-gray-text); margin: 0; font-size: 1.1rem; }
+
+/* PAINEL DE FUSO HORÁRIO E GEOLOCALIZAÇÃO */
+.dashboard-panel {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.clock-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.clock-card {
+  background-color: var(--bosch-gray-bg);
+  border: 1px solid var(--bosch-gray-border);
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.clock-card__label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--bosch-gray-text);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.clock-card__time {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--bosch-blue);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+  margin-bottom: 0.35rem;
+}
+
+.clock-card__sub {
+  font-size: 0.8rem;
+  color: var(--bosch-gray-text);
+}
+
+.geo-panel {
+  text-align: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--bosch-gray-border);
+}
+
+.geo-panel h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.geo-panel__status {
+  font-size: 0.95rem;
+  color: var(--bosch-gray-text);
+  margin: 0 0 1rem 0;
+  line-height: 1.5;
+}
+
+.bosch-btn-primary {
+  background-color: var(--bosch-blue);
+  color: var(--bosch-white);
+  border: none;
+  padding: 0.75rem 1.75rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.bosch-btn-primary:hover {
+  background-color: var(--bosch-blue-dark);
+}
+
+.bosch-btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* ABAS DE DIA */
+.day-selector {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.day-tab {
+  background-color: var(--bosch-white);
+  border: 1px solid var(--bosch-gray-border);
+  color: var(--bosch-black);
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 0;
+  font-size: 0.95rem;
+}
+
+.day-tab.active, .day-tab:hover {
+  background-color: var(--bosch-blue);
+  color: var(--bosch-white);
+  border-color: var(--bosch-blue);
+}
+
+/* TABELA DA AGENDA */
+.schedule-table-wrapper {
+  background-color: var(--bosch-white);
+  border: 1px solid var(--bosch-gray-border);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 1rem;
+}
+
+.schedule-table { width: 100%; border-collapse: collapse; text-align: left; min-width: 620px; }
+.schedule-table th, .schedule-table td { padding: 1.25rem; border-bottom: 1px solid var(--bosch-gray-border); vertical-align: top; }
+.schedule-table tr:last-child td { border-bottom: none; }
+.schedule-table th { background-color: var(--bosch-gray-light); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; }
+.time-col { font-weight: 700; color: var(--bosch-blue); white-space: nowrap; }
+.schedule-table td small { display: block; margin-top: 0.35rem; color: var(--bosch-gray-text); font-size: 0.85rem; line-height: 1.4; }
+.highlight-row { background-color: #f0f6fa; border-left: 4px solid var(--bosch-blue); }
+
+/* GRADES DE LOGÍSTICA E CONTATOS */
+.logistics-grid, .hosts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.logistics-card, .host-profile-card { border: 1px solid var(--bosch-gray-border); padding: 1.5rem; }
+.logistics-card { background-color: var(--bosch-gray-bg); display: flex; flex-direction: column; }
+.logistics-category { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--bosch-blue); letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+.logistics-card h3 { margin: 0 0 0.75rem 0; font-size: 1.2rem; }
+.logistics-card p { color: var(--bosch-gray-text); line-height: 1.5; margin: 0 0 1.5rem 0; flex-grow: 1; font-size: 0.9rem; }
+.bosch-btn-secondary-link { color: var(--bosch-blue); text-decoration: none; font-weight: 700; font-size: 0.9rem; display: inline-block; }
+.bosch-btn-secondary-link:hover { text-decoration: underline; color: var(--bosch-blue-dark); }
+
+.host-profile-card { background-color: var(--bosch-white); display: flex; align-items: center; gap: 1.5rem; }
+.host-avatar { background-color: var(--bosch-blue); color: var(--bosch-white); width: 60px; height: 60px; min-width: 60px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.25rem; border-radius: 50%; flex-shrink: 0; }
+.host-details h3 { margin: 0 0 0.25rem 0; font-size: 1.15rem; }
+.host-role { color: var(--bosch-black); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; display: block; margin-bottom: 0.5rem; }
+.host-contact { margin: 0; font-size: 0.85rem; color: var(--bosch-gray-text); line-height: 1.6; word-break: break-word; }
+.host-link { color: var(--bosch-blue); text-decoration: none; font-weight: 600; transition: color 0.2s; }
+.host-link:hover { text-decoration: underline; color: var(--bosch-blue-dark); }
+.host-whatsapp-link { color: #128c7e; font-weight: 700; }
+.host-whatsapp-link:hover { color: #075e54; }
+
+#bosch-logo-text { fill: var(--bosch-red); }
+#bosch-logo-anker { fill: var(--bosch-black); }
+
+/* GRADE DE CARDS COM FOTOS (LOCATION.HTML & SALAS.HTML) */
+.places-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.place-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bosch-white);
+  border: 1px solid var(--bosch-gray-border);
+  text-decoration: none;
+  color: var(--bosch-black);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  overflow: hidden;
+  height: 100%;
+}
+
+.place-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border-color: var(--bosch-blue);
+}
+
+.place-card__image-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background-color: var(--bosch-gray-light);
+  overflow: hidden;
+}
+
+.place-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.place-card:hover .place-card__image {
+  transform: scale(1.04);
+}
+
+.place-card__badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background-color: rgba(31, 31, 31, 0.85);
+  color: var(--bosch-white);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  backdrop-filter: blur(4px);
+}
+
+.place-card__content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.place-card__title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--bosch-black);
+  transition: color 0.2s;
+}
+
+.place-card:hover .place-card__title {
+  color: var(--bosch-blue);
+}
+
+.place-card__address {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--bosch-gray-text);
+  margin: 0 0 0.75rem 0;
+  line-height: 1.4;
+}
+
+.place-card__desc {
+  font-size: 0.9rem;
+  color: var(--bosch-gray-text);
+  line-height: 1.5;
+  margin: 0 0 1.25rem 0;
+  flex-grow: 1;
+}
+
+.place-card__action {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+/* RODAPÉ OFICIAL BOSCH */
+.o-footer {
+  background-color: var(--bosch-white);
+  color: var(--bosch-gray-text);
+  font-size: 0.85rem;
+  padding: 0;
+  margin-top: 3rem;
+}
+
+.a-divider {
+  border: none;
+  height: 1px;
+  background-color: var(--bosch-gray-border);
+  margin: 0;
+}
+
+.e-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 2.5rem;
+}
+
+.o-footer__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.o-footer__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.o-footer__links li {
+  margin: 0;
+}
+
+.a-link a {
+  color: var(--bosch-gray-text);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.a-link a:hover {
+  color: var(--bosch-blue);
+  text-decoration: underline;
+}
+
+.o-footer__copyright {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--bosch-gray-text);
+  padding-top: 0.5rem;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 992px) {
+  .o-minimal-header__top, 
+  .section-container, 
+  .executive-banner,
+  .e-container { 
+    padding-left: 1.5rem; 
+    padding-right: 1.5rem; 
+  }
+  .o-minimal-header__actions { 
+    right: 1.5rem; 
+  }
+  .executive-banner { 
+    padding: 3rem 1.5rem; 
+  }
+  .executive-banner h1 { 
+    font-size: 2.2rem; 
+  }
+  .executive-banner p { 
+    font-size: 1.1rem; 
+  }
+}
+
+@media (max-width: 768px) {
+  .o-minimal-header__top { 
+    padding: 0.65rem 1rem; 
+  }
+
+  .o-minimal-header__actions { 
+    right: 1rem; 
+    left: 1rem; 
+    width: auto; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.16);
+  }
+
+  .executive-banner { 
+    padding: 2.75rem 1rem; 
+  }
+  .executive-banner h1 { 
+    font-size: 1.85rem; 
+  }
+  .executive-banner p { 
+    font-size: 1rem; 
+    line-height: 1.5; 
+  }
+
+  .section-container,
+  .e-container {
+    padding: 2rem 1rem;
+  }
+
+  .section-title {
+    margin-bottom: 1.75rem;
+  }
+  .section-title h2 { 
+    font-size: 1.5rem; 
+  }
+  .section-title p {
+    font-size: 0.95rem;
+  }
+
+  .clock-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .clock-card__time {
+    font-size: 2.1rem;
+  }
+
+  .day-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+  .day-tab { 
+    width: 100%;
+    text-align: center; 
+    padding: 0.75rem 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .hosts-grid, 
+  .logistics-grid, 
+  .places-grid { 
+    grid-template-columns: 1fr; 
+  }
+
+  .host-profile-card { 
+    flex-direction: column; 
+    text-align: center; 
+    padding: 1.25rem;
+  }
+
+  .host-contact {
+    margin-top: 0.25rem;
+  }
+
+  .schedule-table th, 
+  .schedule-table td { 
+    padding: 0.85rem 0.75rem; 
+  }
+
+  .schedule-table th {
+    font-size: 0.75rem;
+  }
+
+  .o-footer__links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .o-minimal-header__top {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .o-minimal-header__logo svg {
+    width: 85px;
+    height: 18px;
+  }
+
+  .home-button {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.8rem;
+  }
+
+  .executive-banner {
+    padding: 2.25rem 0.75rem;
+  }
+
+  .executive-banner__tag {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .executive-banner h1 {
+    font-size: 1.55rem;
+  }
+
+  .executive-banner p {
+    font-size: 0.9rem;
+  }
+
+  .section-container,
+  .e-container {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .section-title h2 {
+    font-size: 1.35rem;
+  }
+
+  .day-selector {
+    grid-template-columns: 1fr;
+  }
+
+  .day-tab {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .place-card__image-container {
+    height: 175px;
+  }
+
+  .place-card__content {
+    padding: 1.15rem;
+  }
+
+  .place-card__title {
+    font-size: 1.1rem;
+  }
+
+  .place-card__desc {
+    font-size: 0.85rem;
+  }
+
+  .schedule-table {
+    min-width: 540px;
+  }
+
+  .schedule-table th, 
+  .schedule-table td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.85rem;
+  }
+}
