@@ -9,7 +9,7 @@
   --bosch-blue-light: #eff5f9;
   --bosch-blue-dark: #005a9c;
   --bosch-gray-light: #f0f4f8;
-  --bosch-gray-bg: #f9fbfd;
+  --bosch-gray-bg: #ffffff;
   --bosch-gray-border: #d7e1e6;
   --bosch-gray-text: #5c6670;
   --bosch-white: #ffffff;
@@ -280,11 +280,12 @@ body {
 }
 
 .clock-card {
-  background-color: var(--bosch-gray-bg);
+  background-color: var(--bosch-white);
   border: 1px solid var(--bosch-gray-border);
   padding: 1.5rem;
   text-align: center;
   border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
 }
 
 .clock-card__label {
@@ -311,11 +312,12 @@ body {
 }
 
 .geo-panel {
-  background-color: var(--bosch-gray-bg);
+  background-color: var(--bosch-white);
   border: 1px solid var(--bosch-gray-border);
   padding: 1.5rem;
   text-align: center;
   border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
 }
 
 .geo-panel h3 {
@@ -371,20 +373,61 @@ body {
   border-color: var(--bosch-blue);
 }
 
-/* --- TABELA DA AGENDA --- */
+/* --- TABELA DA AGENDA (DESKTOP) --- */
 .schedule-table-wrapper {
   background-color: var(--bosch-white);
   border: 1px solid var(--bosch-gray-border);
   overflow-x: auto;
 }
 
-.schedule-table { width: 100%; border-collapse: collapse; text-align: left; }
-.schedule-table th, .schedule-table td { padding: 1.25rem; border-bottom: 1px solid var(--bosch-gray-border); vertical-align: top; }
-.schedule-table tr:last-child td { border-bottom: none; }
-.schedule-table th { background-color: var(--bosch-gray-light); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; }
-.time-col { font-weight: 700; color: var(--bosch-blue); white-space: nowrap; }
-.schedule-table td small { display: block; margin-top: 0.25rem; color: var(--bosch-gray-text); font-size: 0.85rem; }
-.highlight-row { background-color: #f0f6fa; border-left: 4px solid var(--bosch-blue); }
+.schedule-table { 
+  width: 100%; 
+  border-collapse: collapse; 
+  text-align: left; 
+  background-color: var(--bosch-white); 
+}
+
+.schedule-table th, .schedule-table td { 
+  padding: 1.25rem; 
+  border-bottom: 1px solid var(--bosch-gray-border); 
+  vertical-align: top; 
+  background-color: var(--bosch-white);
+}
+
+.schedule-table tr:last-child td { 
+  border-bottom: none; 
+}
+
+.schedule-table th { 
+  background-color: var(--bosch-gray-light); 
+  font-weight: 700; 
+  font-size: 0.8rem; 
+  text-transform: uppercase; 
+}
+
+.time-col { 
+  font-weight: 700; 
+  color: var(--bosch-blue); 
+  white-space: nowrap; 
+}
+
+.schedule-table td small { 
+  display: block; 
+  margin-top: 0.25rem; 
+  color: var(--bosch-gray-text); 
+  font-size: 0.85rem; 
+}
+
+/* Linhas destacadas (highlight-row): fundo 100% branco e sem barra azul lateral */
+.schedule-table tr.highlight-row { 
+  background-color: var(--bosch-white) !important; 
+  border-left: none !important; 
+}
+
+.schedule-table tr.highlight-row td { 
+  background-color: var(--bosch-white) !important; 
+  border-left: none !important; 
+}
 
 /* --- GRADES DE LOGÍSTICA E CONTATOS --- */
 .logistics-grid, .hosts-grid {
@@ -393,76 +436,152 @@ body {
   gap: 1.5rem;
 }
 
-.logistics-card, .host-profile-card { border: 1px solid var(--bosch-gray-border); padding: 1.5rem; }
-.logistics-card { background-color: var(--bosch-gray-bg); display: flex; flex-direction: column; }
-.logistics-category { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--bosch-blue); letter-spacing: 0.05em; margin-bottom: 0.5rem; }
-.logistics-card h3 { margin: 0 0 0.75rem 0; font-size: 1.2rem; }
-.logistics-card p { color: var(--bosch-gray-text); line-height: 1.5; margin: 0 0 1.5rem 0; flex-grow: 1; font-size: 0.9rem; }
-.bosch-btn-secondary-link { color: var(--bosch-blue); text-decoration: none; font-weight: 700; font-size: 0.9rem; }
-.bosch-btn-secondary-link:hover { text-decoration: underline; color: var(--bosch-blue-dark); }
+.logistics-card, .host-profile-card { 
+  border: 1px solid var(--bosch-gray-border); 
+  padding: 1.5rem; 
+}
 
-.host-profile-card { background-color: var(--bosch-white); display: flex; align-items: center; gap: 1.5rem; }
-.host-avatar { background-color: var(--bosch-blue); color: var(--bosch-white); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.25rem; border-radius: 50%; flex-shrink: 0; }
-.host-details h3 { margin: 0 0 0.25rem 0; font-size: 1.15rem; }
-.host-role { color: var(--bosch-black); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; display: block; margin-bottom: 0.5rem; }
-.host-contact { margin: 0; font-size: 0.85rem; color: var(--bosch-gray-text); line-height: 1.6; }
-.host-link { color: var(--bosch-blue); text-decoration: none; font-weight: 600; transition: color 0.2s; }
-.host-link:hover { text-decoration: underline; color: var(--bosch-blue-dark); }
-.host-whatsapp-link { color: #128c7e; }
-.host-whatsapp-link:hover { color: #075e54; }
+.logistics-card { 
+  background-color: var(--bosch-white); 
+  display: flex; 
+  flex-direction: column; 
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.logistics-category { 
+  font-size: 0.75rem; 
+  font-weight: 700; 
+  text-transform: uppercase; 
+  color: var(--bosch-blue); 
+  letter-spacing: 0.05em; 
+  margin-bottom: 0.5rem; 
+}
+
+.logistics-card h3 { 
+  margin: 0 0 0.75rem 0; 
+  font-size: 1.2rem; 
+}
+
+.logistics-card p { 
+  color: var(--bosch-gray-text); 
+  line-height: 1.5; 
+  margin: 0 0 1.5rem 0; 
+  flex-grow: 1; 
+  font-size: 0.9rem; 
+}
+
+.bosch-btn-secondary-link { 
+  color: var(--bosch-blue); 
+  text-decoration: none; 
+  font-weight: 700; 
+  font-size: 0.9rem; 
+}
+
+.bosch-btn-secondary-link:hover { 
+  text-decoration: underline; 
+  color: var(--bosch-blue-dark); 
+}
+
+.host-profile-card { 
+  background-color: var(--bosch-white); 
+  display: flex; 
+  align-items: center; 
+  gap: 1.5rem; 
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.host-avatar { 
+  background-color: var(--bosch-blue); 
+  color: var(--bosch-white); 
+  width: 60px; 
+  height: 60px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  font-weight: 700; 
+  font-size: 1.25rem; 
+  border-radius: 50%; 
+  flex-shrink: 0; 
+}
+
+.host-details h3 { 
+  margin: 0 0 0.25rem 0; 
+  font-size: 1.15rem; 
+}
+
+.host-role { 
+  color: var(--bosch-black); 
+  font-size: 0.85rem; 
+  font-weight: 700; 
+  text-transform: uppercase; 
+  display: block; 
+  margin-bottom: 0.5rem; 
+}
+
+.host-contact { 
+  margin: 0; 
+  font-size: 0.85rem; 
+  color: var(--bosch-gray-text); 
+  line-height: 1.6; 
+}
+
+.host-link { 
+  color: var(--bosch-blue); 
+  text-decoration: none; 
+  font-weight: 600; 
+  transition: color 0.2s; 
+}
+
+.host-link:hover { 
+  text-decoration: underline; 
+  color: var(--bosch-blue-dark); 
+}
+
+.host-whatsapp-link { 
+  color: #128c7e; 
+}
+
+.host-whatsapp-link:hover { 
+  color: #075e54; 
+}
 
 #bosch-logo-text { fill: var(--bosch-red); }
 #bosch-logo-anker { fill: var(--bosch-black); }
 
-/* --- BOTÃO DE RETORNO RESPONSIVO (BACK TO VISIT SCHEDULE) --- */
+/* --- BOTÃO DE RETORNO RESPONSIVO --- */
 .back-navigation-container {
-    margin-top: 3.5rem;
-    margin-bottom: 2rem;
-    text-align: center;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    box-sizing: border-box;
+  margin-top: 3.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 .back-visit-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--bosch-blue);
-    color: var(--bosch-white);
-    border: 1px solid var(--bosch-blue);
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1rem;
-    padding: 0.9rem 2.5rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
-    box-sizing: border-box;
-    max-width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bosch-blue);
+  color: var(--bosch-white);
+  border: 1px solid var(--bosch-blue);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.9rem 2.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+  box-sizing: border-box;
+  max-width: 100%;
 }
 
 .back-visit-btn:hover {
-    background-color: var(--bosch-blue-dark);
-    border-color: var(--bosch-blue-dark);
-    transform: translateY(-2px);
+  background-color: var(--bosch-blue-dark);
+  border-color: var(--bosch-blue-dark);
+  transform: translateY(-2px);
 }
-
-/* Ajuste específico para celulares */
-@media (max-width: 768px) {
-    .back-navigation-container {
-        margin-top: 2.5rem;
-        padding: 0 1rem;
-    }
-    .back-visit-btn {
-        width: 100%;
-        font-size: 0.95rem;
-        padding: 0.85rem 1rem;
-        text-align: center;
-    }
-}
-
 
 /* --- GRADE DE CARDS COM FOTOS (LOCATION.HTML) --- */
 .places-grid {
@@ -643,9 +762,154 @@ body {
   .hosts-grid, .logistics-grid, .places-grid { grid-template-columns: 1fr; }
   .host-profile-card { flex-direction: column; text-align: center; }
   .o-footer__links { flex-direction: column; gap: 0.75rem; }
+
+  .back-navigation-container {
+    margin-top: 2.5rem;
+    padding: 0 1rem;
+  }
+  .back-visit-btn {
+    width: 100%;
+    font-size: 0.95rem;
+    padding: 0.85rem 1rem;
+    text-align: center;
+  }
+
+  /* --- TRANSFORMAÇÃO DA AGENDA EM CARDS NO MOBILE --- */
+  .schedule-table-wrapper {
+    background-color: transparent;
+    border: none;
+    overflow: visible;
+  }
+
+  .schedule-table {
+    display: block;
+    width: 100%;
+    background: transparent;
+  }
+
+  .schedule-table thead {
+    display: none; /* Oculta o cabeçalho de tabela clássica */
+  }
+
+  .schedule-table tbody {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  /* Cada linha da tabela vira um card moderno e independente */
+  .schedule-table tbody tr {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bosch-white) !important;
+    border: 1px solid var(--bosch-gray-border) !important;
+    border-radius: 6px;
+    padding: 1.25rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .schedule-table tbody tr.highlight-row {
+    background-color: var(--bosch-white) !important;
+    border-left: 1px solid var(--bosch-gray-border) !important;
+  }
+
+  .schedule-table tbody td {
+    display: block;
+    padding: 0.35rem 0;
+    border-bottom: none;
+    background-color: transparent !important;
+    font-size: 0.95rem;
+  }
+
+  /* Horário destacado no topo do card */
+  .schedule-table tbody td.time-col {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--bosch-blue);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--bosch-gray-border);
+  }
+
+  /* Evento / Título principal */
+  .schedule-table tbody td:nth-child(2) {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    padding-bottom: 0.5rem;
+  }
+
+  .schedule-table tbody td:nth-child(2) strong {
+    color: var(--bosch-black);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .schedule-table tbody td:nth-child(2) small {
+    font-size: 0.88rem;
+    color: var(--bosch-gray-text);
+    line-height: 1.45;
+  }
+
+  /* Localização com ícone SVG (map.svg) */
+  .schedule-table tbody td:nth-child(3) {
+    font-size: 0.88rem;
+    color: var(--bosch-black);
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+  }
+
+  .schedule-table tbody td:nth-child(3)::before {
+    content: "Location:";
+    display: inline-flex;
+    align-items: center;
+    padding-left: 1.35rem;
+    background-image: url('Assent/icons/map.svg');
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 15px 15px;
+    font-weight: 700;
+    color: var(--bosch-gray-text);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  /* Responsável / Host com ícone SVG (people.svg) */
+  .schedule-table tbody td:nth-child(4) {
+    font-size: 0.88rem;
+    color: var(--bosch-black);
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-top: 0.2rem;
+    flex-wrap: wrap;
+  }
+
+  .schedule-table tbody td:nth-child(4)::before {
+    content: "Host / Lead:";
+    display: inline-flex;
+    align-items: center;
+    padding-left: 1.35rem;
+    background-image: url('Assent/icons/people.svg');
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 15px 15px;
+    font-weight: 700;
+    color: var(--bosch-gray-text);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
 }
 
 @media (max-width: 480px) {
   .day-selector { grid-template-columns: 1fr; }
-  .schedule-table th, .schedule-table td { padding: 0.85rem 0.65rem; font-size: 0.85rem; }
+  .schedule-table tbody tr {
+    padding: 1rem;
+  }
 }

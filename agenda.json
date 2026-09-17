@@ -15,7 +15,7 @@
         {
           "time": "04:50 - 05:45",
           "title": "Immigration, Luggage & Arrival Buffer",
-          "description": "Time reserved for immigration, luggage collection and meeting the driver.",
+          "description": "Time reserved for immigration, baggage claim and meeting the driver at arrivals terminal.",
           "location": "GRU Airport — Arrivals Terminal",
           "host": "Mr. Amann",
           "highlight": false
@@ -23,10 +23,18 @@
         {
           "time": "05:45 - 06:00",
           "title": "Transfer to TRYP by Wyndham São Paulo Paulista Paraíso hotel",
-          "description": "Motorista: Evandro Luiz | Veículo: Jeep Commander preto (TLX8G16) | Celular: +55 11 96747-1701.",
+          "description": "Driver: Evandro Luiz | Vehicle: Black Jeep Commander (TLX8G16) | Phone: +55 11 96747-1701.",
           "location": "GRU Airport → Avenida Paulista, São Paulo",
           "host": "Driver (Evandro Luiz)",
           "highlight": false
+        },
+        {
+          "time": "06:00 - 09:00",
+          "title": "Transfer in SP + Refresh on Wyndham SP",
+          "description": "Arrival at hotel next to Peça.aí, check-in, unpack, rest and planned refresh before meetings.",
+          "location": "TRYP by Wyndham São Paulo Paulista Paraíso",
+          "host": "Mr. Amann",
+          "highlight": true
         },
         {
           "time": "09:00 - 09:30",
@@ -63,7 +71,7 @@
         {
           "time": "14:30 - 16:30",
           "title": "Buffer",
-          "description": "Reserved buffer time. Coffee: água, castanha, café sem açúcar.",
+          "description": "Reserved buffer time. Coffee: water, mixed nuts, unsweetened coffee.",
           "location": "Joinville Room (Ca401)",
           "host": "Mr. Amann",
           "highlight": true
@@ -101,7 +109,7 @@
         {
           "time": "09:00 - 10:00",
           "title": "BDO6-LA Team Meet & Greet",
-          "description": "Coffee: pão de queijo, castanha, café e água com gás.",
+          "description": "Coffee: Brazilian cheese bread (pão de queijo), nuts, coffee and sparkling water.",
           "location": "Campinas Room (Ca401)",
           "host": "BDO6-LA Team + Carsten",
           "highlight": false
@@ -117,7 +125,7 @@
         {
           "time": "11:00 - 11:30",
           "title": "BDO6-LA Team Session",
-          "description": "Focused exchange on ways of working, priorities, and expected contribution. Coffee: salada de fruta, mini lanches.",
+          "description": "Focused exchange on ways of working, priorities, and expected contribution. Coffee: fruit salad, nuts, mini sandwiches.",
           "location": "Campinas Room (Ca401)",
           "host": "BDO6-LA Team + Carsten",
           "highlight": false
@@ -295,15 +303,15 @@
       "tabTitle": "Day 4 - Sep 24",
       "events": [
         {
-          "time": "07:30 - 08:00",
+          "time": "08:00 - 08:30",
           "title": "Driver Pickup at Hotel Lobby",
-          "description": "Driver pickup at 07:30 in the Radisson Red Campinas lobby, arriving at Bosch at 08:00.",
+          "description": "Driver pickup at 07:30 in the Radisson Red Campinas lobby, arriving at Bosch at 08:30 (due to check-out time).",
           "location": "Radisson Red Campinas → Bosch Campinas",
           "host": "Driver",
           "highlight": false
         },
         {
-          "time": "08:00 - 08:30",
+          "time": "08:30 - 09:30",
           "title": "Buffer for Germany Calls",
           "description": "Protected time for calls with Germany.",
           "location": "Joinville Room (Ca401)",
@@ -311,19 +319,11 @@
           "highlight": true
         },
         {
-          "time": "08:30 - 09:30",
-          "title": "Day 3 Recap and feedback",
-          "description": "Debrief and session consolidation.",
+          "time": "09:30 - 11:30",
+          "title": "Day 3 Recap & Strategic Alignment",
+          "description": "Session debrief, consolidation, and Mr. Carsten's final feedback, directions and regional goals.",
           "location": "Joinville Room (Ca401)",
           "host": "BDO6-LA Team + Carsten",
-          "highlight": false
-        },
-        {
-          "time": "09:30 - 11:00",
-          "title": "Mr. Carsten Feedback & Strategic Alignment",
-          "description": "Final feedback, directions and regional goals.",
-          "location": "Joinville Room (Ca401)",
-          "host": "Mr. Amann",
           "highlight": false
         },
         {

@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <!-- CABEÇALHO BOSCH -->
+    <!-- BOSCH HEADER -->
     <header class="frontend-kit__header o-minimal-header -detached">
         <div class="o-minimal-header__supergraphic"></div>
 
@@ -22,7 +22,7 @@
 
             <div class="o-minimal-header__controls">
                 <a href="index.html" class="home-button">Home</a>
-                <button class="o-minimal-header__toggle" id="menuToggle" aria-label="Abrir Menu de Navegação" aria-expanded="false" onclick="toggleNavMenu()">
+                <button class="o-minimal-header__toggle" id="menuToggle" aria-label="Open Navigation Menu" aria-expanded="false" onclick="toggleNavMenu()">
                     <span class="hamburger-icon" aria-hidden="true">
                         <span class="hamburger-bar"></span>
                         <span class="hamburger-bar"></span>
@@ -41,7 +41,7 @@
         </div>
     </header>
 
-    <!-- BANNER DE BOAS-VINDAS -->
+    <!-- WELCOME BANNER -->
     <section class="executive-banner">
         <div class="executive-banner__overlay"></div>
         <div class="executive-banner__content">
@@ -51,10 +51,10 @@
         </div>
     </section>
 
-    <!-- CONTEÚDO PRINCIPAL -->
+    <!-- MAIN CONTENT -->
     <main class="main-content">
 
-        <!-- PAINEL DE FUSO HORÁRIO E GEOLOCALIZAÇÃO -->
+        <!-- TIME ZONE & GEOLOCATION PANEL -->
         <section class="section-container bg-white" style="margin-bottom: 2rem;">
             <div class="dashboard-panel">
                 <div class="section-title" style="text-align: center; margin-bottom: 1.5rem;">
@@ -83,14 +83,14 @@
             </div>
         </section>
 
-        <!-- SEÇÃO 1: CRONOGRAMA POR DIA (SCHEDULE) -->
+        <!-- SECTION 1: VISIT SCHEDULE -->
         <section id="schedule" class="section-container">
             <div class="section-title">
                 <h2>Visit Schedule</h2>
                 <p>Track your agenda, events, and milestones day-by-day.</p>
             </div>
 
-            <!-- Botões das Abas -->
+            <!-- Tab Buttons -->
             <div class="day-selector">
                 <button class="day-tab active" onclick="showDay(event, 'day-1-content')">Day 1 - Sep 21</button>
                 <button class="day-tab" onclick="showDay(event, 'day-2-content')">Day 2 - Sep 22</button>
@@ -98,7 +98,7 @@
                 <button class="day-tab" onclick="showDay(event, 'day-4-content')">Day 4 - Sep 24</button>
             </div>
 
-            <!-- DIA 1 -->
+            <!-- DAY 1 -->
             <div id="day-1-content" class="schedule-table-wrapper day-content">
                 <table class="schedule-table">
                     <thead>
@@ -106,19 +106,20 @@
                     </thead>
                     <tbody>
                         <tr><td class="time-col">04:50</td><td><strong>Flight LH 506 Lands at GRU Airport</strong><br><small>Carsten lands at GRU on 21 September 2026 at 04:50 with LH 506.</small></td><td>GRU Airport</td><td>Mr. Amann</td></tr>
-                        <tr><td class="time-col">04:50 - 05:45</td><td><strong>Immigration, Luggage & Arrival Buffer</strong><br><small>Time reserved for immigration, luggage collection and meeting the driver.</small></td><td>GRU Airport — Arrivals Terminal</td><td>Mr. Amann</td></tr>
-                        <tr><td class="time-col">05:45 - 06:00</td><td><strong>Transfer to TRYP by Wyndham São Paulo Paulista Paraíso hotel</strong><br><small>Motorista: Evandro Luiz | Veículo: Jeep Commander preto (TLX8G16) | Celular: +55 11 96747-1701.</small></td><td>GRU Airport &rarr; Avenida Paulista, São Paulo</td><td>Driver (Evandro Luiz)</td></tr>
-                        <tr><td class="time-col">09:00 - 09:30</td><td><strong>Pickup at Hotel to go to Peça.aí</strong><br><small>Pickup at hotel lobby. Debora and Robert will join.</small></td><td>TRYP by Wyndham São Paulo Paulista Paraíso &rarr; Peça.aí</td><td>Debora and Robert</td></tr>
-                        <tr><td class="time-col">09:30 - 11:30</td><td><strong>Peça.aí Meeting</strong><br><small>Strategic and operational review at Peça.aí venture.</small></td><td>Peça.aí — Avenida Paulista, São Paulo</td><td>Mr. Amann; Peça.aí team; Robert and Debora</td></tr>
+                        <tr><td class="time-col">04:50 - 05:45</td><td><strong>Immigration, Luggage & Arrival Buffer</strong><br><small>Time reserved for immigration, baggage claim and meeting the driver.</small></td><td>GRU Airport — Arrivals Terminal</td><td>Mr. Amann</td></tr>
+                        <tr><td class="time-col">05:45 - 06:00</td><td><strong>Transfer to TRYP by Wyndham São Paulo Paulista Paraíso hotel</strong><br><small>Driver: Evandro Luiz | Vehicle: Black Jeep Commander (Plate: TLX8G16) | Phone: +55 11 96747-1701.</small></td><td>GRU Airport &rarr; Avenida Paulista, São Paulo</td><td>Driver (Evandro Luiz)</td></tr>
+                        <tr class="highlight-row"><td class="time-col">06:00 - 09:00</td><td><strong>Transfer in SP + Refresh on Wyndham SP</strong><br><small>Arrival at hotel next to Peça.aí, check-in, unpack, rest and planned refresh before meetings.</small></td><td>TRYP by Wyndham São Paulo Paulista Paraíso</td><td>Mr. Amann</td></tr>
+                        <tr><td class="time-col">09:00 - 09:30</td><td><strong>Pickup at Hotel to go to Peça.aí</strong><br><small>Pickup at hotel lobby. Debora and Robert will join (traffic buffer accounted for).</small></td><td>TRYP by Wyndham SP &rarr; Peça.aí</td><td>Debora and Robert</td></tr>
+                        <tr><td class="time-col">09:30 - 11:30</td><td><strong>Peça.aí Meeting</strong><br><small>Strategic and operational review at Peça.aí venture on Avenida Paulista.</small></td><td>Peça.aí — Avenida Paulista, São Paulo</td><td>Mr. Amann; Peça.aí team; Robert and Debora</td></tr>
                         <tr><td class="time-col">11:30 - 13:30</td><td><strong>Return from São Paulo to Campinas</strong><br><small>All three of us return together to Campinas in Robert's car.</small></td><td>São Paulo &rarr; Campinas</td><td>Mr. Amann; Robert and Debora</td></tr>
                         <tr><td class="time-col">13:30 - 14:30</td><td><strong>Arrival at Bosch Campinas Plant + Lunch</strong><br><small>Arrival and executive lunch at Bosch Campinas plant.</small></td><td>Bosch Campinas Plant</td><td>Mr. Amann; Robert and Debora</td></tr>
-                        <tr class="highlight-row"><td class="time-col">14:30 - 16:30</td><td><strong>Buffer</strong><br><small>Reserved buffer time. Coffee: água, castanha, café sem açúcar.</small></td><td>Joinville Room (Ca401)</td><td>Mr. Amann</td></tr>
-                        <tr><td class="time-col">17:30 - 20:00</td><td><strong>Free Dinner</strong><br><small>Evening at leisure due to 04:50 arrival.</small></td><td>Free choice</td><td>Mr. Amann</td></tr>
+                        <tr class="highlight-row"><td class="time-col">14:30 - 16:30</td><td><strong>Buffer</strong><br><small>Reserved buffer time. Coffee break: water, mixed nuts, unsweetened coffee.</small></td><td>Joinville Room (Ca401)</td><td>Mr. Amann</td></tr>
+                        <tr><td class="time-col">17:30 - 20:00</td><td><strong>Free Dinner</strong><br><small>Evening at leisure due to early 04:50 arrival.</small></td><td>Free choice</td><td>Mr. Amann</td></tr>
                     </tbody>
                 </table>
             </div>
 
-            <!-- DIA 2 -->
+            <!-- DAY 2 -->
             <div id="day-2-content" class="schedule-table-wrapper day-content" style="display:none;">
                 <table class="schedule-table">
                     <thead>
@@ -127,19 +128,19 @@
                     <tbody>
                         <tr><td class="time-col">07:30 - 08:00</td><td><strong>Driver Pickup at Hotel Lobby</strong><br><small>Driver: Alexandre Heleoterio (+55 19 98606-7699). Pickup at Radisson Red lobby, arriving at Bosch at 08:00.</small></td><td>Radisson Red Campinas &rarr; Bosch Campinas</td><td>Driver (Alexandre Heleoterio)</td></tr>
                         <tr class="highlight-row"><td class="time-col">08:00 - 09:00</td><td><strong>Buffer for Germany Calls</strong><br><small>Protected time for calls with Germany.</small></td><td>Joinville Room (Ca401)</td><td>Mr. Amann</td></tr>
-                        <tr><td class="time-col">09:00 - 10:00</td><td><strong>BDO6-LA Team Meet & Greet</strong><br><small>Coffee: pão de queijo, castanha, café e água com gás.</small></td><td>Campinas Room (Ca401)</td><td>BDO6-LA Team + Carsten</td></tr>
+                        <tr><td class="time-col">09:00 - 10:00</td><td><strong>BDO6-LA Team Meet & Greet</strong><br><small>Coffee: Brazilian cheese bread (pão de queijo), nuts, coffee and sparkling water.</small></td><td>Campinas Room (Ca401)</td><td>BDO6-LA Team + Carsten</td></tr>
                         <tr><td class="time-col">10:00 - 11:00</td><td><strong>BDO6 LA Key results</strong><br><small>Presentation of key achievements and regional metrics.</small></td><td>Campinas Room (Ca401)</td><td>BDO6-LA Team + Carsten</td></tr>
-                        <tr><td class="time-col">11:00 - 11:30</td><td><strong>BDO6-LA Team Session</strong><br><small>Focused exchange on ways of working, priorities, and expected contribution. Coffee: salada de fruta, mini lanches.</small></td><td>Campinas Room (Ca401)</td><td>BDO6-LA Team + Carsten</td></tr>
+                        <tr><td class="time-col">11:00 - 11:30</td><td><strong>BDO6-LA Team Session</strong><br><small>Focused exchange on ways of working, priorities, and expected contribution. Coffee: fruit salad, nuts, mini sandwiches, mini cupcakes.</small></td><td>Campinas Room (Ca401)</td><td>BDO6-LA Team + Carsten</td></tr>
                         <tr><td class="time-col">11:30 - 13:00</td><td><strong>Lunch</strong><br><small>Lunch with the BDO6-LA team.</small></td><td>Bosch Canteen</td><td>BDO6-LA Team</td></tr>
                         <tr><td class="time-col">13:15 - 14:00</td><td><strong>MA/BD direction</strong><br><small>Strategic direction review.</small></td><td>Campinas Room (Ca401)</td><td>BDO6-LA Team + Carsten</td></tr>
                         <tr><td class="time-col">14:00 - 16:00</td><td><strong>Townhall with MA-LA associates</strong><br><small>Focus on AI and regional transformation.</small></td><td>Campinas Room (Ca401)</td><td>MA-LA Associates</td></tr>
                         <tr><td class="time-col">16:00 - 17:00</td><td><strong>Wrap-up Session</strong><br><small>Review the day's discussions, capture key takeaways and confirm next steps.</small></td><td>Campinas Room (Ca401)</td><td>BDO6-LA Team + Carsten</td></tr>
-                        <tr><td class="time-col">17:00 - 20:00</td><td><strong>Dinner with LA BDO team</strong><br><small>Matuto - Dom Pedro Mall - Barbecue house.</small></td><td>Matuto Churrascaria (Dom Pedro Mall)</td><td>BDO6-LA Team + Carsten</td></tr>
+                        <tr><td class="time-col">17:00 - 20:00</td><td><strong>Dinner with LA BDO team</strong><br><small>Matuto Steakhouse - Dom Pedro Mall.</small></td><td>Matuto Churrascaria (Dom Pedro Mall)</td><td>BDO6-LA Team + Carsten</td></tr>
                     </tbody>
                 </table>
             </div>
 
-            <!-- DIA 3 -->
+            <!-- DAY 3 -->
             <div id="day-3-content" class="schedule-table-wrapper day-content" style="display:none;">
                 <table class="schedule-table">
                     <thead>
@@ -152,30 +153,29 @@
                         <tr><td class="time-col">10:00 - 10:10</td><td><strong>Walk from Ca401 to the BD Building</strong><br><small>Host accompanies Mr. Carsten to BD Building (Ca106).</small></td><td>Ca401 &rarr; BD Building (Ca106)</td><td>Host team</td></tr>
                         <tr><td class="time-col">10:10 - 10:30</td><td><strong>Coffee Break & Team Introductions</strong><br><small>Welcome coffee in the BD building and introductions to colleagues from the IT support area.</small></td><td>BD Building (Ca106)</td><td>IT Support Team & host team</td></tr>
                         <tr><td class="time-col">10:30 - 11:30</td><td><strong>BD Strategic view - G7 presentation</strong><br><small>Presentation of G7 strategic view.</small></td><td>BD room (Ca106)</td><td>BD Team</td></tr>
-                        <tr><td class="time-col">11:30 - 12:00</td><td><strong>BD area tour</strong><br><small>Guided visit across BD area facilities with architectural overview.</small></td><td>BD room (Ca106)</td><td>Fernanda Borghi; Mr. Amann; Debora</td></tr>
-                        <tr><td class="time-col">12:00 - 13:15</td><td><strong>Lunch</strong><br><small>Executive lunch.</small></td><td>Bosch Canteen</td><td>Host team</td></tr>
+                        <tr><td class="time-col">11:30 - 12:00</td><td><strong>BD area tour</strong><br><small>Guided visit across BD area facilities with architectural overview by Fernando Camargo.</small></td><td>BD room (Ca106)</td><td>Fernanda Borghi; Mr. Amann; Debora; Fernando Camargo</td></tr>
+                        <tr><td class="time-col">12:00 - 13:15</td><td><strong>Lunch</strong><br><small>Executive lunch with squad leadership.</small></td><td>Bosch Canteen</td><td>Host team & Fernanda Borghi</td></tr>
                         <tr><td class="time-col">13:15 - 14:30</td><td><strong>Digital Strategy & Innovation Portfolio: Local Value, Global Potential</strong><br><small>Present the Data Driven Company vision, DXF and local-module landscape, achievements, and rollouts.</small></td><td>BD room (Ca106)</td><td>Gabriela Juliani</td></tr>
                         <tr><td class="time-col">14:30 - 15:30</td><td><strong>Delivery Excellence: Efficiency MA@LA Squad / BoosterTeam LA</strong><br><small>Automation, Capacity Recovery & Predictability.</small></td><td>BD room (Ca106)</td><td>Rodrigo Rangel, Fernanda Borghi, Matheus Accorsi</td></tr>
                         <tr><td class="time-col">15:30 - 16:15</td><td><strong>Roadmap 26-27</strong><br><small>Future deliverables and pipeline review.</small></td><td>BD room (Ca106)</td><td>Débora Lima</td></tr>
                         <tr><td class="time-col">16:15 - 17:00</td><td><strong>Day 3 Wrap-Up and feedback Scale or Stop</strong><br><small>Consolidated evaluation of presented topics.</small></td><td>BD room (Ca106)</td><td>Same team</td></tr>
                         <tr><td class="time-col">17:00 - 17:30</td><td><strong>End of Day 3</strong><br><small>Closing remarks.</small></td><td>Joinville Room (Ca401)</td><td>Mr. Amann</td></tr>
-                        <tr><td class="time-col">17:30 - 18:00</td><td><strong>Wrap Up Visit - Open dialogue</strong><br><small>Open dialogue and visit wrap-up including Robert Hilbert and Anderson Espricigo.</small></td><td>Robert's Room</td><td>Hilbert Robert (MA/RP-LA); Espricigo Anderson (MA/COR-LA)</td></tr>
-                        <tr><td class="time-col">17:30 - 20:00</td><td><strong>Dinner at NB Steak house</strong><br><small>Dinner at NB Steak house (or Enoteca Olivetto). Participants: Mr. Amann, Debora Lima, Robert Hilbert, Anderson Espricigo, Carlos Francklin.</small></td><td>NB Steak house</td><td>Mr. Amann, Debora, Robert, Anderson, Francklin</td></tr>
+                        <tr><td class="time-col">17:30 - 18:00</td><td><strong>Wrap Up Visit - Open dialogue</strong><br><small>Open dialogue and visit wrap-up including Robert Hilbert and Anderson Espricigo.</small></td><td>Robert's Room</td><td>Hilbert Robert (MA/RP-LA); Espricigo Anderson (MA/COR-LA); Mr. Amann</td></tr>
+                        <tr><td class="time-col">17:30 - 20:00</td><td><strong>Dinner at NB Steak house</strong><br><small>Dinner at NB Steak house. Transfer departs at 18:00. Participants: Mr. Amann, Debora Lima, Robert Hilbert, Anderson Espricigo, Carlos Francklin.</small></td><td>NB Steak house</td><td>Mr. Amann, Debora, Robert, Anderson, Francklin</td></tr>
                     </tbody>
                 </table>
             </div>
 
-            <!-- DIA 4 -->
+            <!-- DAY 4 -->
             <div id="day-4-content" class="schedule-table-wrapper day-content" style="display:none;">
                 <table class="schedule-table">
                     <thead>
                         <tr><th>Time</th><th>Event / Activity</th><th>Location</th><th>Host / Lead</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td class="time-col">07:30 - 08:00</td><td><strong>Driver Pickup at Hotel Lobby</strong><br><small>Driver pickup at 07:30 in the Radisson Red Campinas lobby, arriving at Bosch at 08:00.</small></td><td>Radisson Red Campinas &rarr; Bosch Campinas</td><td>Driver</td></tr>
-                        <tr class="highlight-row"><td class="time-col">08:00 - 08:30</td><td><strong>Buffer for Germany Calls</strong><br><small>Protected time for calls with Germany.</small></td><td>Joinville Room (Ca401)</td><td>Mr. Amann</td></tr>
-                        <tr><td class="time-col">08:30 - 09:30</td><td><strong>Day 3 Recap and feedback</strong><br><small>Debrief and session consolidation.</small></td><td>Joinville Room (Ca401)</td><td>BDO6-LA Team + Carsten</td></tr>
-                        <tr><td class="time-col">09:30 - 11:00</td><td><strong>Mr. Carsten Feedback & Strategic Alignment</strong><br><small>Final feedback, directions and regional goals.</small></td><td>Joinville Room (Ca401)</td><td>Mr. Amann</td></tr>
+                        <tr><td class="time-col">08:00 - 08:30</td><td><strong>Driver Pickup at Hotel Lobby</strong><br><small>Driver pickup at 07:30 in the Radisson Red Campinas lobby, arriving at Bosch at 08:30 (due to check-out time).</small></td><td>Radisson Red Campinas &rarr; Bosch Campinas</td><td>Driver</td></tr>
+                        <tr class="highlight-row"><td class="time-col">08:30 - 09:30</td><td><strong>Buffer for Germany Calls</strong><br><small>Protected time for calls with Germany. Coffee service: water, mixed nuts, unsweetened coffee.</small></td><td>Joinville Room (Ca401)</td><td>Mr. Amann</td></tr>
+                        <tr><td class="time-col">09:30 - 11:30</td><td><strong>Day 3 Recap & Strategic Alignment</strong><br><small>Session debrief, consolidation, and Mr. Carsten's final feedback, directions and regional goals. Coffee with/without sugar, sparkling water and mixed nuts.</small></td><td>Joinville Room (Ca401)</td><td>BDO6-LA Team + Carsten</td></tr>
                         <tr><td class="time-col">11:30 - 12:30</td><td><strong>Lunch</strong><br><small>Lunch before departure.</small></td><td>Bosch Canteen</td><td>Mr. Amann</td></tr>
                         <tr><td class="time-col">13:00 - 15:30</td><td><strong>Transfer to GRU Airport</strong><br><small>Departure transfer at 13:00 for flight LH 507, departing GRU at 18:10. Confirm vehicle and terminal.</small></td><td>Bosch Campinas &rarr; GRU Airport</td><td>Driver</td></tr>
                     </tbody>
@@ -183,7 +183,7 @@
             </div>
         </section>
 
-        <!-- SEÇÃO 2: LOGÍSTICA E LINKS -->
+        <!-- SECTION 2: LOGISTICS AND INTERACTION -->
         <section id="logistics" class="section-container bg-white">
             <div class="section-title">
                 <h2>Interactivity & Logistics</h2>
@@ -213,26 +213,26 @@
             </div>
         </section>
 
-        <!-- SEÇÃO 3: CONTATOS LOCAIS -->
+        <!-- SECTION 3: LOCAL CONTACTS -->
         <section id="contacts" class="section-container">
             <div class="section-title">
                 <h2>Local Hosts & Contacts</h2>
                 <p>Reach out directly to the local team for any assistance or inquiries.</p>
             </div>
             <div class="hosts-grid">
-                <!-- 1. Motorista São Paulo (Evandro Luiz) -->
+                <!-- 1. Dedicated Driver SP (Evandro Luiz) -->
                 <div class="host-profile-card">
                     <div class="host-avatar">EL</div>
                     <div class="host-details">
                         <h3>Evandro Luiz</h3>
                         <span class="host-role">Dedicated Driver — SP & GRU Airport</span>
-                        <p class="host-contact">Vehicle: Jeep Commander black (Plate: TLX8G16)</p>
+                        <p class="host-contact">Vehicle: Black Jeep Commander (Plate: TLX8G16)</p>
                         <p class="host-contact">Phone: <a href="tel:+5511967471701" class="host-link">+55 (11) 96747-1701</a></p>
                         <p class="host-contact">WhatsApp: <a href="https://wa.me/5511967471701" target="_blank" rel="noopener noreferrer" class="host-link host-whatsapp-link">Chat on WhatsApp &rarr;</a></p>
                     </div>
                 </div>
 
-                <!-- 2. Motorista Campinas (Alexandre Heleoterio) -->
+                <!-- 2. Dedicated Driver Campinas (Alexandre Heleoterio) -->
                 <div class="host-profile-card">
                     <div class="host-avatar">AH</div>
                     <div class="host-details">
@@ -258,7 +258,7 @@
         </section>
     </main>
 
-    <!-- FOOTER OFICIAL BOSCH -->
+    <!-- BOSCH MINIMAL FOOTER -->
     <footer class="o-footer -minimal">
         <hr class="a-divider"/>
         <div class="e-container">

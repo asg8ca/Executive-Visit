@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <!-- CABEÇALHO BOSCH COM BOTÃO HOME E MENU -->
+    <!-- BOSCH HEADER WITH HOME BUTTON & MENU -->
     <header class="frontend-kit__header o-minimal-header -detached">
         <div class="o-minimal-header__supergraphic"></div>
 
@@ -20,11 +20,11 @@
                 </svg>
             </a>
 
-            <!-- CONTROLES DO CABEÇALHO -->
+            <!-- HEADER CONTROLS -->
             <div class="o-minimal-header__controls">
                 <a href="index.html" class="home-button">Home</a>
 
-                <button class="o-minimal-header__toggle" id="menuToggle" aria-label="Abrir Menu de Navegação" aria-expanded="false" onclick="toggleNavMenu()">
+                <button class="o-minimal-header__toggle" id="menuToggle" aria-label="Open Navigation Menu" aria-expanded="false" onclick="toggleNavMenu()">
                     <span class="hamburger-icon" aria-hidden="true">
                         <span class="hamburger-bar"></span>
                         <span class="hamburger-bar"></span>
@@ -33,99 +33,99 @@
                 </button>
             </div>
 
-            <!-- AÇÕES DE NAVEGAÇÃO -->
+            <!-- NAVIGATION ACTIONS -->
             <ul class="o-minimal-header__actions" id="navActions">
                 <li><a href="index.html#schedule" class="frontend-kit__header__link" onclick="closeNavMenu()">Schedule</a></li>
                 <li><a href="location.html" class="frontend-kit__header__link" onclick="closeNavMenu()">Logistics & Maps</a></li>
                 <li><a href="salas.html" class="frontend-kit__header__link -header-active" onclick="closeNavMenu()">Meeting Rooms</a></li>
-                <li><a href="index.html" class="frontend-kit__header__link" onclick="closeNavMenu()">Local Hosts</a></li>
+                <li><a href="index.html#contacts" class="frontend-kit__header__link" onclick="closeNavMenu()">Local Hosts</a></li>
                 <li><div class="brand-selection"><span class="brand-selection__label">Bosch Brazil</span></div></li>
             </ul>
         </div>
     </header>
 
-    <!-- BANNER DE CABEÇALHO -->
+    <!-- HEADER BANNER -->
     <section class="executive-banner">
         <div class="executive-banner__overlay"></div>
         <div class="executive-banner__content">
             <span class="executive-banner__tag">Internal Facilities & Plant Map</span>
             <h1>Plant Campinas — Meeting Rooms</h1>
-            <p>Guia de localização e estrutura das salas dos prédios Ca401 e Edifício BD (Ca106) para a visita executiva.</p>
+            <p>Location guide, room layout, and internal walking routes for Building Ca401 and BD Building (Ca106) during the executive visit.</p>
         </div>
     </section>
 
-    <!-- GRADE DAS SALAS -->
+    <!-- ROOMS & FACILITIES GRID -->
     <main class="main-content">
         <section class="section-container">
             <div class="section-title">
                 <h2>Meeting Rooms & Buildings Layout</h2>
-                <p>Consulte abaixo a localização exata, andar, capacidade e orientações de rota interna.</p>
+                <p>Refer below for exact locations, floor levels, room equipment, and internal facility walking routes.</p>
             </div>
 
             <div class="places-grid">
 
-                <!-- CARD 1: SALA CAMPINAS (Ca401 - 3º ANDAR) -->
+                <!-- CARD 1: CAMPINAS ROOM (Ca401 - 3rd FLOOR) -->
                 <div class="place-card" style="cursor: default;">
                     <div class="place-card__image-container">
-                        <img src="https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=800&q=80" alt="Sala Campinas - Prédio Ca401" class="place-card__image" loading="lazy">
-                        <span class="place-card__badge" style="background-color: var(--bosch-blue);">Prédio Ca401</span>
+                        <img src="https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=800&q=80" alt="Campinas Room - Building Ca401" class="place-card__image" loading="lazy">
+                        <span class="place-card__badge" style="background-color: var(--bosch-blue);">Building Ca401</span>
                     </div>
                     <div class="place-card__content">
-                        <span class="logistics-category">3º Andar • Prédio Ca401</span>
-                        <h3 class="place-card__title">Sala Campinas</h3>
-                        <p class="place-card__address">Localização: Prédio Ca401, 3º Andar — Acesso pelos elevadores centrais</p>
-                        <p class="place-card__desc">Sala principal para os encontros estratégicos, apresentações com a liderança MA-LA, BDO6 Key Results e Townhall com associados. Equipada com sistema multimídia completo, Teams Room e videoconferência.</p>
+                        <span class="logistics-category">3rd Floor • Building Ca401</span>
+                        <h3 class="place-card__title">Campinas Room</h3>
+                        <p class="place-card__address">Location: Building Ca401, 3rd Floor — Central elevator access</p>
+                        <p class="place-card__desc">Primary executive conference room for high-level alignments, strategic presentations with MA-LA leadership, BDO6 Key Results, and Associate Townhalls. Fully equipped with multi-screen displays, high-speed connectivity, and Microsoft Teams Room video conferencing.</p>
                         <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--bosch-gray-border);">
-                            <span style="font-size: 0.85rem; font-weight: 700; color: var(--bosch-blue);">Atividades: BDO6-LA Sessions, Townhall AI, Wrap-ups</span>
+                            <span style="font-size: 0.85rem; font-weight: 700; color: var(--bosch-blue);">Key Sessions: BDO6-LA Sessions, AI Townhall, Wrap-up Meetings</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- CARD 2: SALA JOINVILLE (Ca401 - 3º ANDAR) -->
+                <!-- CARD 2: JOINVILLE ROOM (Ca401 - 3rd FLOOR) -->
                 <div class="place-card" style="cursor: default;">
                     <div class="place-card__image-container">
-                        <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80" alt="Sala Joinville - Prédio Ca401" class="place-card__image" loading="lazy">
-                        <span class="place-card__badge" style="background-color: var(--bosch-blue);">Prédio Ca401</span>
+                        <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80" alt="Joinville Room - Building Ca401" class="place-card__image" loading="lazy">
+                        <span class="place-card__badge" style="background-color: var(--bosch-blue);">Building Ca401</span>
                     </div>
                     <div class="place-card__content">
-                        <span class="logistics-category">3º Andar • Prédio Ca401</span>
-                        <h3 class="place-card__title">Sala Joinville</h3>
-                        <p class="place-card__address">Localização: Prédio Ca401, 3º Andar — Ala executiva ao lado da Sala Campinas</p>
-                        <p class="place-card__desc">Ambiente privativo e reservado para as ligações de alinhamento com a Alemanha (Germany Calls), períodos de buffer executivo, análise de feedbacks e alinhamentos estratégicos com o Sr. Carsten.</p>
+                        <span class="logistics-category">3rd Floor • Building Ca401</span>
+                        <h3 class="place-card__title">Joinville Room</h3>
+                        <p class="place-card__address">Location: Building Ca401, 3rd Floor — Executive wing adjacent to Campinas Room</p>
+                        <p class="place-card__desc">Dedicated and quiet executive conference room reserved for live cross-continental alignment calls with Germany (Germany Calls), buffer sessions, feedback debriefs, and strategic alignments with Mr. Carsten.</p>
                         <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--bosch-gray-border);">
-                            <span style="font-size: 0.85rem; font-weight: 700; color: var(--bosch-blue);">Atividades: Calls Alemanha, Buffers, Strategic Alignment</span>
+                            <span style="font-size: 0.85rem; font-weight: 700; color: var(--bosch-blue);">Key Sessions: Germany Calls, Protected Buffers, Strategic Alignment</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- CARD 3: EDIFÍCIO BD (Ca106) -->
+                <!-- CARD 3: BD BUILDING (Ca106) -->
                 <div class="place-card" style="cursor: default;">
                     <div class="place-card__image-container">
-                        <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80" alt="Edifício BD Ca106" class="place-card__image" loading="lazy">
-                        <span class="place-card__badge" style="background-color: #005a9c;">Edifício BD</span>
+                        <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80" alt="BD Building Ca106" class="place-card__image" loading="lazy">
+                        <span class="place-card__badge" style="background-color: #005a9c;">BD Building</span>
                     </div>
                     <div class="place-card__content">
-                        <span class="logistics-category">Prédio Ca106 • Bosch Digital</span>
-                        <h3 class="place-card__title">Edifício BD (Ca106)</h3>
-                        <p class="place-card__address">Localização: Prédio Ca106 — Caminho a pé a partir do Ca401 (~10 min)</p>
-                        <p class="place-card__desc">Sede das equipes de Digital Strategy, Inovação, TI Support, BoosterTeam LA e eficiência de entregas. Local do Welcome Coffee, BD Area Tour, Roadmap 26-27 e sessões de Delivery Excellence.</p>
+                        <span class="logistics-category">Building Ca106 • Bosch Digital</span>
+                        <h3 class="place-card__title">BD Building (Ca106)</h3>
+                        <p class="place-card__address">Location: Building Ca106 — Walking route from Ca401 (~10 min)</p>
+                        <p class="place-card__desc">Headquarters of the Digital Strategy, Innovation, IT Support, BoosterTeam LA, and Delivery Excellence squads. Venue for the Day 3 Welcome Coffee, BD Area Tour, Roadmap 26–27 showcase, and Delivery Excellence demonstrations.</p>
                         <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--bosch-gray-border);">
-                            <span style="font-size: 0.85rem; font-weight: 700; color: var(--bosch-blue);">Atividades: BD Strategic View, Tour, Digital Activitys</span>
+                            <span style="font-size: 0.85rem; font-weight: 700; color: var(--bosch-blue);">Key Sessions: BD Strategic View, Facility Tour, Digital Portfolio Review</span>
                         </div>
                     </div>
                 </div>
 
             </div>
 
-            <!-- INSTRUÇÃO DE NAVEGAÇÃO ENTRE PRÉDIOS -->
+            <!-- INTERNAL WALKING NAVIGATION INSTRUCTION -->
             <div style="margin-top: 2.5rem; background-color: var(--bosch-white); border: 1px solid var(--bosch-gray-border); padding: 1.5rem; border-left: 4px solid var(--bosch-blue);">
-                <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem;">Trajeto Interno: Ca401 &rarr; Edifício BD (Ca106)</h3>
+                <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem;">Internal Navigation: Ca401 &rarr; BD Building (Ca106)</h3>
                 <p style="margin: 0; color: var(--bosch-gray-text); font-size: 0.9rem; line-height: 1.5;">
-                    A caminhada entre o Prédio Ca401 e o Edifício BD leva aproximadamente 10 minutos por via interna asfaltada da fábrica. Em caso de chuva, veículos internos estarão disponíveis na portaria do Ca401 para apoio ao traslado.
+                    The walk between Building Ca401 and the BD Building takes approximately 10 minutes along the plant’s paved internal avenues. In the event of rain or adverse weather, internal plant shuttles will be stationed at the entrance of Ca401 to assist with transfer.
                 </p>
             </div>
 
-          <!-- BOTÃO RETORNAR AO CRONOGRAMA -->
+            <!-- RESPONSIVE RETURN BUTTON -->
             <div class="back-navigation-container">
                 <a href="index.html#schedule" class="back-visit-btn">
                     &larr; Back to Visit Schedule
@@ -134,7 +134,7 @@
         </section>
     </main>
 
-    <!-- FOOTER OFICIAL BOSCH -->
+    <!-- OFFICIAL BOSCH FOOTER -->
     <footer class="o-footer -minimal">
         <hr class="a-divider"/>
         <div class="e-container">
