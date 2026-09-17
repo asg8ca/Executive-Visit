@@ -414,6 +414,56 @@ body {
 #bosch-logo-text { fill: var(--bosch-red); }
 #bosch-logo-anker { fill: var(--bosch-black); }
 
+/* --- BOTÃO DE RETORNO RESPONSIVO (BACK TO VISIT SCHEDULE) --- */
+.back-navigation-container {
+    margin-top: 3.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.back-visit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bosch-blue);
+    color: var(--bosch-white);
+    border: 1px solid var(--bosch-blue);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.9rem 2.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+.back-visit-btn:hover {
+    background-color: var(--bosch-blue-dark);
+    border-color: var(--bosch-blue-dark);
+    transform: translateY(-2px);
+}
+
+/* Ajuste específico para celulares */
+@media (max-width: 768px) {
+    .back-navigation-container {
+        margin-top: 2.5rem;
+        padding: 0 1rem;
+    }
+    .back-visit-btn {
+        width: 100%;
+        font-size: 0.95rem;
+        padding: 0.85rem 1rem;
+        text-align: center;
+    }
+}
+
+
 /* --- GRADE DE CARDS COM FOTOS (LOCATION.HTML) --- */
 .places-grid {
   display: grid;
