@@ -5,6 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bosch Brazil - Logistics & Locations</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .category-filter-bar {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            background-color: var(--bosch-white);
+            border: 1px solid var(--bosch-gray-border);
+            color: var(--bosch-black);
+            padding: 0.65rem 1.25rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-radius: 4px;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--bosch-blue);
+            color: var(--bosch-white);
+            border-color: var(--bosch-blue);
+        }
+        .location-section {
+            margin-bottom: 3rem;
+            scroll-margin-top: 5rem;
+        }
+        .location-section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+            border-bottom: 2px solid var(--bosch-blue);
+            padding-bottom: 0.5rem;
+        }
+        .location-section-header h3 {
+            margin: 0;
+            font-size: 1.4rem;
+            color: var(--bosch-black);
+        }
+        .location-section-header span {
+            font-size: 0.85rem;
+            color: var(--bosch-gray-text);
+        }
+    </style>
 </head>
 <body>
 
@@ -47,170 +92,211 @@
         <div class="executive-banner__content">
             <span class="executive-banner__tag">Executive Visit 2026</span>
             <h1>Locations & Navigation</h1>
-            <p>Direct routes and Google Maps destinations for all visit venues, hotels, and executive dining spots.</p>
+            <p>Direct routes and Google Maps destinations for Bosch site facilities, executive accommodations, dining venues, and shopping centers.</p>
         </div>
     </section>
 
-    <!-- VENUES & LOCATIONS GRID -->
+    <!-- MAIN CONTENT -->
     <main class="main-content">
         <section class="section-container">
             <div class="section-title">
                 <h2>Visit Venues & Key Addresses</h2>
-                <p>Click on any destination below to view the address and get turn-by-turn directions directly in Google Maps.</p>
+                <p>Filter by category or click on any destination below to view turn-by-turn directions directly in Google Maps.</p>
             </div>
 
-            <div class="places-grid">
+            <!-- BARRA DE FILTRO POR CATEGORIA -->
+            <div class="category-filter-bar">
+                <button class="filter-btn active" onclick="filterLocations('all', this)">All Locations</button>
+                <button class="filter-btn" onclick="filterLocations('sites', this)">🏢 Bosch Sites</button>
+                <button class="filter-btn" onclick="filterLocations('hotels', this)">🏨 Accommodations</button>
+                <button class="filter-btn" onclick="filterLocations('dining', this)">🍽️ Executive Dining</button>
+                <button class="filter-btn" onclick="filterLocations('shopping', this)">🛍️ Shopping & Leisure</button>
+            </div>
 
-                <!-- 1. Campinas Headquarters (Robert Bosch) -->
-                <a href="https://maps.app.goo.gl/NtqfDYrCDPujdwAYA" target="_blank" rel="noopener noreferrer" class="place-card">
-                    <div class="place-card__image-container">
-                        <img src="https://tse3.mm.bing.net/th/id/OIP.05zv2geV6vG9UVhk3ysbDwHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Bosch Campinas Plant" class="place-card__image" loading="lazy">
-                        <span class="place-card__badge">Site HQ</span>
-                    </div>
-                    <div class="place-card__content">
-                        <span class="logistics-category">Campinas Headquarters</span>
-                        <h3 class="place-card__title">Bosch Campinas Plant (Robert Bosch)</h3>
-                        <p class="place-card__address">Via Anhanguera, km 98 - Parque Anhumas, Campinas - SP</p>
-                        <p class="place-card__desc">Main headquarters for executive sessions, Campinas and Joinville meeting rooms (Ca401), and the BD Building (Ca106).</p>
-                        <span class="bosch-btn-secondary-link place-card__action">Open in Google Maps &rarr;</span>
-                    </div>
-                </a>
+            <!-- SEÇÃO 1: BOSCH SITES & HEADQUARTERS -->
+            <div id="bosch-sites" class="location-section" data-category="sites">
+                <div class="location-section-header">
+                    <h3>🏢 Bosch Sites & Workplaces</h3>
+                    <span>Campinas HQ & São Paulo Ventures</span>
+                </div>
+                <div class="places-grid">
+                    <!-- 1. Campinas Headquarters (Robert Bosch) -->
+                    <a href="https://maps.app.goo.gl/NtqfDYrCDPujdwAYA" target="_blank" rel="noopener noreferrer" class="place-card">
+                        <div class="place-card__image-container">
+                            <img src="https://www.bosch-press.com.br/pressportal/br/media/dam_images_br/campinas-10.jpg" alt="Bosch Campinas Plant" class="place-card__image" loading="lazy">
+                            <span class="place-card__badge">BOSCH PLANT</span>
+                        </div>
+                        <div class="place-card__content">
+                            <span class="logistics-category">Campinas Headquarters</span>
+                            <h3 class="place-card__title">Bosch Campinas Plant (Robert Bosch)</h3>
+                            <p class="place-card__address">Via Anhanguera, km 98 - Parque Anhumas, Campinas - SP</p>
+                            <p class="place-card__desc">Main headquarters for executive sessions, Campinas and Joinville meeting rooms (Ca401), and the BD Building (Ca106).</p>
+                            <span class="bosch-btn-secondary-link place-card__action">Open in Google Maps &rarr;</span>
+                        </div>
+                    </a>
 
-                <!-- 2. Hotel Radisson RED Campinas -->
-                <a href="https://www.google.com/maps/search/?api=1&query=Radisson+RED+Campinas" target="_blank" rel="noopener noreferrer" class="place-card">
-                    <div class="place-card__image-container">
-                        <img src="https://tse3.mm.bing.net/th/id/OIP.MNgy-w1Oe5c9kL-lO_fcfgHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Radisson RED Campinas" class="place-card__image" loading="lazy">
-                        <span class="place-card__badge">Hotel</span>
-                    </div>
-                    <div class="place-card__content">
-                        <span class="logistics-category">Campinas Accommodation</span>
-                        <h3 class="place-card__title">Radisson RED Campinas Hotel</h3>
-                        <p class="place-card__address">Av. Júlio de Mesquita, 705 - Cambuí, Campinas - SP</p>
-                        <p class="place-card__desc">Executive accommodation in Campinas (Cambuí neighborhood), designated morning pickup point with driver Alexandre.</p>
-                        <span class="bosch-btn-secondary-link place-card__action">Open in Google Maps &rarr;</span>
-                    </div>
-                </a>
+                    <!-- 2. Peça aí (São Paulo) -->
+                    <a href="https://www.google.com/maps/search/?api=1&query=Peca+ai+Avenida+Paulista+Sao+Paulo" target="_blank" rel="noopener noreferrer" class="place-card">
+                        <div class="place-card__image-container">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRI86V1erhAC3jTGp7o_QRJ_zi6jsIJ8EOa_BQ8NBFsQ&s=10" alt="Peça aí São Paulo" class="place-card__image" loading="lazy">
+                            <span class="place-card__badge">Digital Venture</span>
+                        </div>
+                        <div class="place-card__content">
+                            <span class="logistics-category">Digital Venture</span>
+                            <h3 class="place-card__title">Peça aí — São Paulo</h3>
+                            <p class="place-card__address">Avenida Paulista, São Paulo - SP</p>
+                            <p class="place-card__desc">Digital venture and automotive parts marketplace for workshops, host venue for Day 1 executive review.</p>
+                            <span class="bosch-btn-secondary-link place-card__action">Open in Google Maps &rarr;</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
 
-                <!-- 3. Peça aí (São Paulo) -->
-                <a href="https://www.google.com/maps/search/?api=1&query=Peca+ai+Avenida+Paulista+Sao+Paulo" target="_blank" rel="noopener noreferrer" class="place-card">
-                    <div class="place-card__image-container">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRI86V1erhAC3jTGp7o_QRJ_zi6jsIJ8EOa_BQ8NBFsQ&s=10" alt="Peça aí São Paulo" class="place-card__image" loading="lazy">
-                        <span class="place-card__badge">Innovation</span>
-                    </div>
-                    <div class="place-card__content">
-                        <span class="logistics-category">Digital Venture</span>
-                        <h3 class="place-card__title">Peça aí — São Paulo</h3>
-                        <p class="place-card__address">Avenida Paulista, São Paulo - SP</p>
-                        <p class="place-card__desc">Digital venture and automotive parts marketplace for workshops, host venue for Day 1 executive review.</p>
-                        <span class="bosch-btn-secondary-link place-card__action">Open in Google Maps &rarr;</span>
-                    </div>
-                </a>
+            <!-- SEÇÃO 2: HOTELS & ACCOMMODATIONS -->
+            <div id="hotels" class="location-section" data-category="hotels">
+                <div class="location-section-header">
+                    <h3>🏨 Accommodations & Stays</h3>
+                    <span>Executive Hotels in Campinas & São Paulo</span>
+                </div>
+                <div class="places-grid">
+                    <!-- Hotel Radisson RED Campinas -->
+                    <a href="https://www.google.com/maps/search/?api=1&query=Radisson+RED+Campinas" target="_blank" rel="noopener noreferrer" class="place-card">
+                        <div class="place-card__image-container">
+                            <img src="https://tse3.mm.bing.net/th/id/OIP.MNgy-w1Oe5c9kL-lO_fcfgHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Radisson RED Campinas" class="place-card__image" loading="lazy">
+                            <span class="place-card__badge">Hotel</span>
+                        </div>
+                        <div class="place-card__content">
+                            <span class="logistics-category">Campinas Accommodation</span>
+                            <h3 class="place-card__title">Radisson RED Campinas Hotel</h3>
+                            <p class="place-card__address">Av. Júlio de Mesquita, 705 - Cambuí, Campinas - SP</p>
+                            <p class="place-card__desc">Executive accommodation in Campinas (Cambuí neighborhood), designated morning pickup point with driver Alexandre.</p>
+                            <span class="bosch-btn-secondary-link place-card__action">Open in Google Maps &rarr;</span>
+                        </div>
+                    </a>
 
-                <!-- 4. Hotel TRYP by Wyndham São Paulo Paulista Paraíso -->
-                <a href="https://www.google.com/maps/search/?api=1&query=TRYP+by+Wyndham+Sao+Paulo+Paulista+Paraiso" target="_blank" rel="noopener noreferrer" class="place-card">
-                    <div class="place-card__image-container">
-                        <img src="https://www.wyndhamhotels.com/content/dam/property-images/en-us/wt/br/others/sao-paulo/54982/54982_exterior_view_2.jpg?downsize=1800:*" alt="TRYP by Wyndham São Paulo" class="place-card__image" loading="lazy">
-                        <span class="place-card__badge">Hotel</span>
-                    </div>
-                    <div class="place-card__content">
-                        <span class="logistics-category">São Paulo Accommodation</span>
-                        <h3 class="place-card__title">TRYP by Wyndham São Paulo Paulista Paraíso</h3>
-                        <p class="place-card__address">R. Abílio Soares, 378 - Paraíso, São Paulo - SP</p>
-                        <p class="place-card__desc">Initial arrival hotel in São Paulo featuring direct airport transfer from GRU Airport by driver Evandro.</p>
-                        <span class="bosch-btn-secondary-link place-card__action">Open in Google Maps &rarr;</span>
-                    </div>
-                </a>
+                    <!-- Hotel TRYP by Wyndham São Paulo Paulista Paraíso -->
+                    <a href="https://www.google.com/maps/search/?api=1&query=TRYP+by+Wyndham+Sao+Paulo+Paulista+Paraiso" target="_blank" rel="noopener noreferrer" class="place-card">
+                        <div class="place-card__image-container">
+                            <img src="https://www.wyndhamhotels.com/content/dam/property-images/en-us/wt/br/others/sao-paulo/54982/54982_exterior_view_2.jpg?downsize=1800:*" alt="TRYP by Wyndham São Paulo" class="place-card__image" loading="lazy">
+                            <span class="place-card__badge">Hotel</span>
+                        </div>
+                        <div class="place-card__content">
+                            <span class="logistics-category">São Paulo Accommodation</span>
+                            <h3 class="place-card__title">TRYP by Wyndham São Paulo Paulista Paraíso</h3>
+                            <p class="place-card__address">R. Abílio Soares, 378 - Paraíso, São Paulo - SP</p>
+                            <p class="place-card__desc">Initial arrival hotel in São Paulo featuring direct airport transfer from GRU Airport by driver Evandro.</p>
+                            <span class="bosch-btn-secondary-link place-card__action">Open in Google Maps &rarr;</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
 
-                <!-- 5. NB Steak Campinas (Wednesday Executive Dinner) -->
-                <a href="https://www.google.com/maps/search/?api=1&query=NB+Steak+Campinas+Av+Jose+de+Sousa+Campos" target="_blank" rel="noopener noreferrer" class="place-card">
-                    <div class="place-card__image-container">
-                        <img src="https://media-cdn.tripadvisor.com/media/photo-s/1c/55/ff/85/salao-superior.jpg" alt="NB Steak Campinas" class="place-card__image" loading="lazy">
-                        <span class="place-card__badge">Executive Dining</span>
-                    </div>
-                    <div class="place-card__content">
-                        <span class="logistics-category">Premium Steakhouse</span>
-                        <h3 class="place-card__title">NB Steak Campinas</h3>
-                        <p class="place-card__address">Av. José de Sousa Campos, 837 - Cambuí, Campinas - SP</p>
-                        <p class="place-card__desc">Official venue for the Wednesday executive dinner (Day 3) with Mr. Amann, Débora Lima, Robert Hilbert, and Anderson Espricigo.</p>
-                        <span class="bosch-btn-secondary-link place-card__action">Open in Google Maps &rarr;</span>
-                    </div>
-                </a>
+            <!-- SEÇÃO 3: EXECUTIVE DINING & RESTAURANTS -->
+            <div id="hotels-dining" class="location-section" data-category="dining">
+                <div class="location-section-header">
+                    <h3>🍽️ Executive Dining & Steakhouses</h3>
+                    <span>Official Dinner Venues & Alternative Options</span>
+                </div>
+                <div class="places-grid">
+                    <!-- NB Steak Campinas -->
+                    <a href="https://www.google.com/maps/search/?api=1&query=NB+Steak+Campinas+Av+Jose+de+Sousa+Campos" target="_blank" rel="noopener noreferrer" class="place-card">
+                        <div class="place-card__image-container">
+                            <img src="https://media-cdn.tripadvisor.com/media/photo-s/1c/55/ff/85/salao-superior.jpg" alt="NB Steak Campinas" class="place-card__image" loading="lazy">
+                            <span class="place-card__badge">Executive Dining</span>
+                        </div>
+                        <div class="place-card__content">
+                            <span class="logistics-category">Premium Steakhouse</span>
+                            <h3 class="place-card__title">NB Steak Campinas</h3>
+                            <p class="place-card__address">Av. José de Sousa Campos, 837 - Cambuí, Campinas - SP</p>
+                            <p class="place-card__desc">Official venue for Wednesday executive dinner (Day 3) with Carsten Amann, Robert Hilbert, Debora Lima, and Anderson Espricigo.</p>
+                            <span class="bosch-btn-secondary-link place-card__action">Open in Google Maps &rarr;</span>
+                        </div>
+                    </a>
 
-                <!-- 6. Enoteca Olivetto (Wednesday Alternative Option) -->
-                <a href="https://www.google.com/maps/search/?api=1&query=Olivetto+Restaurante+e+Enoteca+Campinas" target="_blank" rel="noopener noreferrer" class="place-card">
-                    <div class="place-card__image-container">
-                        <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=800&q=80" alt="Enoteca Olivetto" class="place-card__image" loading="lazy">
-                        <span class="place-card__badge">Wine & Dining</span>
-                    </div>
-                    <div class="place-card__content">
-                        <span class="logistics-category">Fine Dining & Wine</span>
-                        <h3 class="place-card__title">Enoteca Olivetto</h3>
-                        <p class="place-card__address">Av. Coronel Silva Telles, 843 - Cambuí, Campinas - SP</p>
-                        <p class="place-card__desc">Award-winning international restaurant and wine cellar in Cambuí; executive backup dining venue.</p>
-                        <span class="bosch-btn-secondary-link place-card__action">Open in Google Maps &rarr;</span>
-                    </div>
-                </a>
+                    <!-- Matuto Dom Pedro Steakhouse -->
+                    <a href="https://www.google.com/maps/search/?api=1&query=Matuto+Dom+Pedro+Campinas" target="_blank" rel="noopener noreferrer" class="place-card">
+                        <div class="place-card__image-container">
+                            <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/d4/c7/03/frente.jpg?w=1200&h=-1&s=1" alt="Matuto Dom Pedro" class="place-card__image" loading="lazy">
+                            <span class="place-card__badge">Restaurant</span>
+                        </div>
+                        <div class="place-card__content">
+                            <span class="logistics-category">BDO Team Dinner</span>
+                            <h3 class="place-card__title">Matuto Dom Pedro Steakhouse</h3>
+                            <p class="place-card__address">Av. Guilherme Campos, 500 - Jd. Santa Genebra, Campinas - SP</p>
+                            <p class="place-card__desc">Traditional Brazilian steakhouse selected for the LA BDO team networking dinner on Tuesday (Day 2).</p>
+                            <span class="bosch-btn-secondary-link place-card__action">Open in Google Maps &rarr;</span>
+                        </div>
+                    </a>
 
-                <!-- 7. Matuto Dom Pedro (Tuesday Team Dinner) -->
-                <a href="https://www.google.com/maps/search/?api=1&query=Matuto+Dom+Pedro+Campinas" target="_blank" rel="noopener noreferrer" class="place-card">
-                    <div class="place-card__image-container">
-                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/d4/c7/03/frente.jpg?w=1200&h=-1&s=1" alt="Matuto Dom Pedro" class="place-card__image" loading="lazy">
-                        <span class="place-card__badge">Restaurant</span>
-                    </div>
-                    <div class="place-card__content">
-                        <span class="logistics-category">BDO Team Dinner</span>
-                        <h3 class="place-card__title">Matuto Dom Pedro Steakhouse</h3>
-                        <p class="place-card__address">Av. Guilherme Campos, 500 - Jd. Santa Genebra, Campinas - SP</p>
-                        <p class="place-card__desc">Traditional Brazilian steakhouse selected for the LA BDO team networking dinner on Tuesday (Day 2).</p>
-                        <span class="bosch-btn-secondary-link place-card__action">Open in Google Maps &rarr;</span>
-                    </div>
-                </a>
+                    <!-- Enoteca Olivetto -->
+                    <a href="https://www.google.com/maps/search/?api=1&query=Olivetto+Restaurante+e+Enoteca+Campinas" target="_blank" rel="noopener noreferrer" class="place-card">
+                        <div class="place-card__image-container">
+                            <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=800&q=80" alt="Enoteca Olivetto" class="place-card__image" loading="lazy">
+                            <span class="place-card__badge">Wine & Dining</span>
+                        </div>
+                        <div class="place-card__content">
+                            <span class="logistics-category">Fine Dining & Wine</span>
+                            <h3 class="place-card__title">Enoteca Olivetto</h3>
+                            <p class="place-card__address">Av. Coronel Silva Telles, 843 - Cambuí, Campinas - SP</p>
+                            <p class="place-card__desc">Award-winning international restaurant and wine cellar in Cambuí; executive backup dining venue.</p>
+                            <span class="bosch-btn-secondary-link place-card__action">Open in Google Maps &rarr;</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
 
-                <!-- 8. Parque Dom Pedro Shopping -->
-                <a href="https://www.google.com/maps/search/?api=1&query=Parque+Dom+Pedro+Shopping+Campinas" target="_blank" rel="noopener noreferrer" class="place-card">
-                    <div class="place-card__image-container">
-                        <img src="https://images.unsplash.com/photo-1519567241046-7f570eee3ce6?auto=format&fit=crop&w=800&q=80" alt="Dom Pedro Shopping" class="place-card__image" loading="lazy">
-                        <span class="place-card__badge">Shopping</span>
-                    </div>
-                    <div class="place-card__content">
-                        <span class="logistics-category">Shopping & Leisure</span>
-                        <h3 class="place-card__title">Parque Dom Pedro Shopping</h3>
-                        <p class="place-card__address">Av. Guilherme Campos, 500 - Jd. Santa Genebra, Campinas - SP</p>
-                        <p class="place-card__desc">The region's largest shopping and entertainment complex, directly adjacent to the Matuto dining area.</p>
-                        <span class="bosch-btn-secondary-link place-card__action">Open in Google Maps &rarr;</span>
-                    </div>
-                </a>
+            <!-- SEÇÃO 4: SHOPPING & LEISURE -->
+            <div id="shopping" class="location-section" data-category="shopping">
+                <div class="location-section-header">
+                    <h3>🛍️ Premier Shopping Malls & Leisure</h3>
+                    <span>Shopping Centers & Services in Campinas</span>
+                </div>
+                <div class="places-grid">
+                    <!-- Parque Dom Pedro Shopping -->
+                    <a href="https://www.google.com/maps/search/?api=1&query=Parque+Dom+Pedro+Shopping+Campinas" target="_blank" rel="noopener noreferrer" class="place-card">
+                        <div class="place-card__image-container">
+                            <img src="https://images.unsplash.com/photo-1519567241046-7f570eee3ce6?auto=format&fit=crop&w=800&q=80" alt="Dom Pedro Shopping" class="place-card__image" loading="lazy">
+                            <span class="place-card__badge">Shopping</span>
+                        </div>
+                        <div class="place-card__content">
+                            <span class="logistics-category">Shopping & Leisure</span>
+                            <h3 class="place-card__title">Parque Dom Pedro Shopping</h3>
+                            <p class="place-card__address">Av. Guilherme Campos, 500 - Jd. Santa Genebra, Campinas - SP</p>
+                            <p class="place-card__desc">The region's largest shopping and entertainment complex, directly adjacent to the Matuto dining area.</p>
+                            <span class="bosch-btn-secondary-link place-card__action">Open in Google Maps &rarr;</span>
+                        </div>
+                    </a>
 
-                <!-- 9. Shopping Iguatemi Campinas -->
-                <a href="https://www.google.com/maps/search/?api=1&query=Shopping+Iguatemi+Campinas" target="_blank" rel="noopener noreferrer" class="place-card">
-                    <div class="place-card__image-container">
-                        <img src="https://www.refugiosnointerior.com.br/sistema/_lib/file/img/lugar/1066/igua2.jpg" alt="Iguatemi Campinas" class="place-card__image" loading="lazy">
-                        <span class="place-card__badge">Shopping</span>
-                    </div>
-                    <div class="place-card__content">
-                        <span class="logistics-category">Shopping & Dining</span>
-                        <h3 class="place-card__title">Shopping Iguatemi Campinas</h3>
-                        <p class="place-card__address">Av. Iguatemi, 777 - Vila Brandina, Campinas - SP</p>
-                        <p class="place-card__desc">Campinas' premier shopping center, offering premium dining, specialty retail, and corporate services.</p>
-                        <span class="bosch-btn-secondary-link place-card__action">Open in Google Maps &rarr;</span>
-                    </div>
-                </a>
+                    <!-- Shopping Iguatemi Campinas -->
+                    <a href="https://www.google.com/maps/search/?api=1&query=Shopping+Iguatemi+Campinas" target="_blank" rel="noopener noreferrer" class="place-card">
+                        <div class="place-card__image-container">
+                            <img src="https://www.refugiosnointerior.com.br/sistema/_lib/file/img/lugar/1066/igua2.jpg" alt="Iguatemi Campinas" class="place-card__image" loading="lazy">
+                            <span class="place-card__badge">Shopping</span>
+                        </div>
+                        <div class="place-card__content">
+                            <span class="logistics-category">Shopping & Dining</span>
+                            <h3 class="place-card__title">Shopping Iguatemi Campinas</h3>
+                            <p class="place-card__address">Av. Iguatemi, 777 - Vila Brandina, Campinas - SP</p>
+                            <p class="place-card__desc">Campinas' premier shopping center, offering premium dining, specialty retail, and corporate services.</p>
+                            <span class="bosch-btn-secondary-link place-card__action">Open in Google Maps &rarr;</span>
+                        </div>
+                    </a>
 
-                <!-- 10. Galleria Shopping Campinas -->
-                <a href="https://www.google.com/maps/search/?api=1&query=Galleria+Shopping+Campinas" target="_blank" rel="noopener noreferrer" class="place-card">
-                    <div class="place-card__image-container">
-                        <img src="https://www.guiadasemana.com.br/contentFiles/system/pictures/2011/10/28492/original/galleria-shopping.jpg" alt="Galleria Shopping Campinas" class="place-card__image" loading="lazy">
-                        <span class="place-card__badge">Shopping</span>
-                    </div>
-                    <div class="place-card__content">
-                        <span class="logistics-category">Shopping & Open-Air Gardens</span>
-                        <h3 class="place-card__title">Galleria Shopping Campinas</h3>
-                        <p class="place-card__address">Rod. D. Pedro I, km 131,5 - Jd. Nilópolis, Campinas - SP</p>
-                        <p class="place-card__desc">Open-air lifestyle shopping center featuring indoor botanical gardens, gourmet bistros, and cafés.</p>
-                        <span class="bosch-btn-secondary-link place-card__action">Open in Google Maps &rarr;</span>
-                    </div>
-                </a>
-
+                    <!-- Galleria Shopping Campinas -->
+                    <a href="https://www.google.com/maps/search/?api=1&query=Galleria+Shopping+Campinas" target="_blank" rel="noopener noreferrer" class="place-card">
+                        <div class="place-card__image-container">
+                            <img src="https://www.guiadasemana.com.br/contentFiles/system/pictures/2011/10/28492/original/galleria-shopping.jpg" alt="Galleria Shopping Campinas" class="place-card__image" loading="lazy">
+                            <span class="place-card__badge">Shopping</span>
+                        </div>
+                        <div class="place-card__content">
+                            <span class="logistics-category">Shopping & Open-Air Gardens</span>
+                            <h3 class="place-card__title">Galleria Shopping Campinas</h3>
+                            <p class="place-card__address">Rod. D. Pedro I, km 131,5 - Jd. Nilópolis, Campinas - SP</p>
+                            <p class="place-card__desc">Open-air lifestyle shopping center featuring indoor botanical gardens, gourmet bistros, and cafés.</p>
+                            <span class="bosch-btn-secondary-link place-card__action">Open in Google Maps &rarr;</span>
+                        </div>
+                    </a>
+                </div>
             </div>
 
             <!-- BACK TO SCHEDULE NAVIGATION -->
@@ -228,10 +314,10 @@
         <div class="e-container">
             <div class="o-footer__bottom">
                 <ul class="o-footer__links">
-                    <li><div class="a-link a-link--integrated"><a href="#" target="_self"><span>Imprint</span></a></div></li>
-                    <li><div class="a-link a-link--integrated"><a href="#" target="_self"><span>Legal information</span></a></div></li>
-                    <li><div class="a-link a-link--integrated"><a href="#" target="_self"><span>Data privacy</span></a></div></li>
-                    <li><div class="a-link a-link--integrated"><a href="#" target="_self"><span>Disclosure documents</span></a></div></li>
+                    <li><a href="#" target="_self"><span>Imprint</span></a></li>
+                    <li><a href="#" target="_self"><span>Legal information</span></a></li>
+                    <li><a href="#" target="_self"><span>Data privacy</span></a></li>
+                    <li><a href="#" target="_self"><span>Disclosure documents</span></a></li>
                 </ul>
                 <hr class="a-divider"/>
                 <div class="o-footer__copyright">
@@ -241,6 +327,21 @@
         </div>
     </footer>
 
+    <script>
+        function filterLocations(category, btnElement) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            if (btnElement) btnElement.classList.add('active');
+
+            const sections = document.querySelectorAll('.location-section');
+            sections.forEach(sec => {
+                if (category === 'all' || sec.getAttribute('data-category') === category) {
+                    sec.style.display = 'block';
+                } else {
+                    sec.style.display = 'none';
+                }
+            });
+        }
+    </script>
     <script src="script.js"></script>
 </body>
 </html>

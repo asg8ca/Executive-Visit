@@ -7,82 +7,72 @@
         {
           "time": "04:50",
           "title": "Flight LH 506 Lands at GRU Airport",
-          "description": "Carsten lands at GRU on 21 September 2026 at 04:50 with LH 506.",
+          "description": "Carsten Amann lands at GRU on 21 September 2026 at 04:50 with LH 506.",
           "location": "GRU Airport",
-          "host": "Mr. Amann",
-          "highlight": false
+          "host": "Carsten Amann"
         },
         {
           "time": "04:50 - 05:45",
           "title": "Immigration, Luggage & Arrival Buffer",
-          "description": "Time reserved for immigration, baggage claim and meeting the driver at arrivals terminal.",
+          "description": "Time reserved for immigration, luggage collection and meeting the driver.",
           "location": "GRU Airport — Arrivals Terminal",
-          "host": "Mr. Amann",
-          "highlight": false
+          "host": "Carsten Amann"
         },
         {
           "time": "05:45 - 06:00",
           "title": "Transfer to TRYP by Wyndham São Paulo Paulista Paraíso hotel",
           "description": "Driver: Evandro Luiz | Vehicle: Black Jeep Commander (TLX8G16) | Phone: +55 11 96747-1701.",
           "location": "GRU Airport → Avenida Paulista, São Paulo",
-          "host": "Driver (Evandro Luiz)",
-          "highlight": false
+          "host": "Driver (Evandro Luiz)"
         },
         {
           "time": "06:00 - 09:00",
           "title": "Transfer in SP + Refresh on Wyndham SP",
           "description": "Arrival at hotel next to Peça.aí, check-in, unpack, rest and planned refresh before meetings.",
           "location": "TRYP by Wyndham São Paulo Paulista Paraíso",
-          "host": "Mr. Amann",
-          "highlight": true
+          "host": "Carsten Amann"
         },
         {
           "time": "09:00 - 09:30",
           "title": "Pickup at Hotel to go to Peça.aí",
-          "description": "Pickup at hotel lobby. Debora and Robert will join.",
+          "description": "Pickup at hotel lobby. Robert Hilbert and Debora Lima will join (traffic buffer accounted for).",
           "location": "TRYP by Wyndham São Paulo Paulista Paraíso → Peça.aí",
-          "host": "Debora and Robert",
-          "highlight": false
+          "host": "Robert Hilbert and Debora Lima"
         },
         {
           "time": "09:30 - 11:30",
           "title": "Peça.aí Meeting",
           "description": "Strategic and operational review at Peça.aí venture.",
           "location": "Peça.aí — Avenida Paulista, São Paulo",
-          "host": "Mr. Amann; Peça.aí team; Robert and Debora",
-          "highlight": false
+          "host": "Carsten Amann, Peça.aí team, Robert Hilbert and Debora Lima"
         },
         {
           "time": "11:30 - 13:30",
           "title": "Return from São Paulo to Campinas",
           "description": "All three of us return together to Campinas in Robert's car.",
           "location": "São Paulo → Campinas",
-          "host": "Mr. Amann; Robert and Debora",
-          "highlight": false
+          "host": "Carsten Amann, Robert Hilbert and Debora Lima"
         },
         {
           "time": "13:30 - 14:30",
           "title": "Arrival at Bosch Campinas Plant + Lunch",
           "description": "Arrival and executive lunch at Bosch Campinas plant.",
           "location": "Bosch Campinas Plant",
-          "host": "Mr. Amann; Robert and Debora",
-          "highlight": false
+          "host": "Carsten Amann, Robert Hilbert and Debora Lima"
         },
         {
           "time": "14:30 - 16:30",
           "title": "Buffer",
-          "description": "Reserved buffer time. Coffee: water, mixed nuts, unsweetened coffee.",
+          "description": "Reserved buffer time no specific agenda. Coffee: água, castanha, café sem açúcar.",
           "location": "Joinville Room (Ca401)",
-          "host": "Mr. Amann",
-          "highlight": true
+          "host": "Carsten Amann"
         },
         {
           "time": "17:30 - 20:00",
           "title": "Free Dinner",
           "description": "Evening at leisure due to 04:50 arrival.",
           "location": "Free choice",
-          "host": "Mr. Amann",
-          "highlight": false
+          "host": "Carsten Amann"
         }
       ]
     },
@@ -95,80 +85,70 @@
           "title": "Driver Pickup at Hotel Lobby",
           "description": "Driver: Alexandre Heleoterio (+55 19 98606-7699). Pickup at Radisson Red lobby, arriving at Bosch at 08:00.",
           "location": "Radisson Red Campinas → Bosch Campinas",
-          "host": "Driver (Alexandre Heleoterio)",
-          "highlight": false
+          "host": "Driver (Alexandre Heleoterio)"
         },
         {
           "time": "08:00 - 09:00",
           "title": "Buffer for Germany Calls",
           "description": "Protected time for calls with Germany.",
           "location": "Joinville Room (Ca401)",
-          "host": "Mr. Amann",
-          "highlight": true
+          "host": "Carsten Amann"
         },
         {
           "time": "09:00 - 10:00",
           "title": "BDO6-LA Team Meet & Greet",
-          "description": "Coffee: Brazilian cheese bread (pão de queijo), nuts, coffee and sparkling water.",
+          "description": "Coffee: pão de queijo, castanha e café com e sem açúcar + Água com gás.",
           "location": "Campinas Room (Ca401)",
-          "host": "BDO6-LA Team + Carsten",
-          "highlight": false
+          "host": "BDO6-LA Team + Carsten Amann"
         },
         {
           "time": "10:00 - 11:00",
           "title": "BDO6 LA Key results",
           "description": "Presentation of key achievements and regional metrics.",
           "location": "Campinas Room (Ca401)",
-          "host": "BDO6-LA Team + Carsten",
-          "highlight": false
+          "host": "BDO6-LA Team + Carsten Amann"
         },
         {
           "time": "11:00 - 11:30",
           "title": "BDO6-LA Team Session",
-          "description": "Focused exchange on ways of working, priorities, and expected contribution. Coffee: fruit salad, nuts, mini sandwiches.",
+          "description": "Focused exchange on ways of working, priorities, and expected contribution. Coffee: salada de fruta, mini lanches.",
           "location": "Campinas Room (Ca401)",
-          "host": "BDO6-LA Team + Carsten",
-          "highlight": false
+          "host": "BDO6-LA Team + Carsten Amann"
         },
         {
           "time": "11:30 - 13:00",
           "title": "Lunch",
           "description": "Lunch with the BDO6-LA team.",
           "location": "Bosch Canteen",
-          "host": "BDO6-LA Team",
-          "highlight": false
+          "host": "BDO6-LA Team + Carsten Amann"
         },
         {
           "time": "13:15 - 14:00",
           "title": "MA/BD direction",
           "description": "Strategic direction review.",
           "location": "Campinas Room (Ca401)",
-          "host": "BDO6-LA Team + Carsten",
-          "highlight": false
+          "host": "BDO6-LA Team + Carsten Amann"
         },
         {
           "time": "14:00 - 16:00",
           "title": "Townhall with MA-LA associates",
           "description": "Focus on AI and regional transformation.",
           "location": "Campinas Room (Ca401)",
-          "host": "MA-LA Associates",
-          "highlight": false
+          "host": "MA-LA Associates"
         },
         {
           "time": "16:00 - 17:00",
           "title": "Wrap-up Session",
           "description": "Review the day's discussions, capture key takeaways and confirm next steps.",
           "location": "Campinas Room (Ca401)",
-          "host": "BDO6-LA Team + Carsten",
-          "highlight": false
+          "host": "BDO6-LA Team + Carsten Amann"
         },
         {
           "time": "17:00 - 20:00",
           "title": "Dinner with LA BDO team",
           "description": "Matuto - Dom Pedro Mall - Barbecue house.",
           "location": "Matuto Churrascaria (Dom Pedro Mall)",
-          "host": "BDO6-LA Team + Carsten",
-          "highlight": false
+          "host": "BDO6-LA Team + Carsten Amann"
         }
       ]
     },
@@ -181,120 +161,105 @@
           "title": "Driver Pickup at Hotel Lobby",
           "description": "Driver: Alexandre Heleoterio (+55 19 98606-7699). Pickup at Radisson Red lobby, arriving at Bosch at 08:00.",
           "location": "Radisson Red Campinas → Bosch Campinas",
-          "host": "Driver (Alexandre Heleoterio)",
-          "highlight": false
+          "host": "Driver (Alexandre Heleoterio)"
         },
         {
           "time": "08:00 - 08:30",
           "title": "Buffer for Germany Calls",
           "description": "Protected time for calls with Germany.",
           "location": "Joinville Room (Ca401)",
-          "host": "Mr. Amann",
-          "highlight": true
+          "host": "Carsten Amann"
         },
         {
           "time": "08:30 - 10:00",
           "title": "MA-LA Leadership & BD/BDO Strategic Alignment",
-          "description": "Leadership introductions, business strategy overview by Robert Hilbert and Anderson Espricigo, and global strategy by Mr. Carsten.",
+          "description": "Leadership introductions (10 min), MA-LA business strategy overview by Robert Hilbert and Anderson Espricigo (50 min), and global BD/BDO strategy by Mr. Carsten (30 min).",
           "location": "Campinas Room (Ca401)",
-          "host": "MA-LA Leadership; Robert Hilbert; Anderson Espricigo; Mr. Amann",
-          "highlight": false
+          "host": "Carsten Amann, Robert Hilbert, Anderson Espricigo, MA-LA Leadership"
         },
         {
           "time": "10:00 - 10:10",
           "title": "Walk from Ca401 to the BD Building",
           "description": "Host accompanies Mr. Carsten to BD Building (Ca106).",
           "location": "Ca401 → BD Building (Ca106)",
-          "host": "Host team",
-          "highlight": false
+          "host": "Host team"
         },
         {
           "time": "10:10 - 10:30",
           "title": "Coffee Break & Team Introductions",
           "description": "Welcome coffee in the BD building and introductions to colleagues from the IT support area.",
           "location": "BD Building (Ca106)",
-          "host": "IT Support Team & host team",
-          "highlight": false
+          "host": "IT Support Team & host team"
         },
         {
           "time": "10:30 - 11:30",
           "title": "BD Strategic view - G7 presentation",
           "description": "Presentation of G7 strategic view.",
           "location": "BD room (Ca106)",
-          "host": "BD Team",
-          "highlight": false
+          "host": "BD Team"
         },
         {
           "time": "11:30 - 12:00",
           "title": "BD area tour",
           "description": "Guided visit across BD area facilities with architectural overview.",
           "location": "BD room (Ca106)",
-          "host": "Fernanda Borghi; Mr. Amann; Debora",
-          "highlight": false
+          "host": "Carsten Amann, Debora Lima, Fernanda Borghi"
         },
         {
           "time": "12:00 - 13:15",
           "title": "Lunch",
-          "description": "Executive lunch.",
+          "description": "Executive lunch with squad leadership.",
           "location": "Bosch Canteen",
-          "host": "Host team",
-          "highlight": false
+          "host": "Host team & Fernanda Borghi"
         },
         {
           "time": "13:15 - 14:30",
           "title": "Digital Strategy & Innovation Portfolio: Local Value, Global Potential",
           "description": "Present the Data Driven Company vision, DXF and local-module landscape, achievements, and rollouts.",
           "location": "BD room (Ca106)",
-          "host": "Gabriela Juliani",
-          "highlight": false
+          "host": "Gabriela Juliani"
         },
         {
           "time": "14:30 - 15:30",
           "title": "Delivery Excellence: Efficiency MA@LA Squad / BoosterTeam LA",
           "description": "Automation, Capacity Recovery & Predictability.",
           "location": "BD room (Ca106)",
-          "host": "Rodrigo Rangel, Fernanda Borghi, Matheus Accorsi",
-          "highlight": false
+          "host": "Rodrigo Rangel, Fernanda Borghi, Matheus Accorsi"
         },
         {
           "time": "15:30 - 16:15",
           "title": "Roadmap 26-27",
           "description": "Future deliverables and pipeline review.",
           "location": "BD room (Ca106)",
-          "host": "Débora Lima",
-          "highlight": false
+          "host": "Debora Lima"
         },
         {
           "time": "16:15 - 17:00",
           "title": "Day 3 Wrap-Up and feedback Scale or Stop",
           "description": "Consolidated evaluation of presented topics.",
           "location": "BD room (Ca106)",
-          "host": "Same team",
-          "highlight": false
+          "host": "BD and BDO6-LA Team"
         },
         {
           "time": "17:00 - 17:30",
           "title": "End of Day 3",
           "description": "Closing remarks.",
           "location": "Joinville Room (Ca401)",
-          "host": "Mr. Amann",
-          "highlight": false
+          "host": "Carsten Amann"
         },
         {
           "time": "17:30 - 18:00",
           "title": "Wrap Up Visit - Open dialogue",
           "description": "Open dialogue and visit wrap-up including Robert Hilbert and Anderson Espricigo.",
           "location": "Robert's Room",
-          "host": "Hilbert Robert (MA/RP-LA); Espricigo Anderson (MA/COR-LA)",
-          "highlight": false
+          "host": "Robert Hilbert, Anderson Espricigo"
         },
         {
           "time": "17:30 - 20:00",
           "title": "Dinner at NB Steak house",
-          "description": "Dinner at NB Steak house (or Enoteca Olivetto). Participants: Mr. Amann, Debora Lima, Robert Hilbert, Anderson Espricigo, Carlos Francklin.",
+          "description": "Dinner at NB Steak house. Participants: Carsten Amann, Robert Hilbert, Debora Lima, Anderson Espricigo, Carlos Francklin.",
           "location": "NB Steak house",
-          "host": "Mr. Amann, Debora, Robert, Anderson, Francklin",
-          "highlight": false
+          "host": "Carsten Amann, Robert Hilbert, Debora Lima, Anderson Espricigo, Carlos Francklin"
         }
       ]
     },
@@ -307,40 +272,35 @@
           "title": "Driver Pickup at Hotel Lobby",
           "description": "Driver pickup at 07:30 in the Radisson Red Campinas lobby, arriving at Bosch at 08:30 (due to check-out time).",
           "location": "Radisson Red Campinas → Bosch Campinas",
-          "host": "Driver",
-          "highlight": false
+          "host": "Driver"
         },
         {
           "time": "08:30 - 09:30",
           "title": "Buffer for Germany Calls",
           "description": "Protected time for calls with Germany.",
           "location": "Joinville Room (Ca401)",
-          "host": "Mr. Amann",
-          "highlight": true
+          "host": "Carsten Amann"
         },
         {
           "time": "09:30 - 11:30",
-          "title": "Day 3 Recap & Strategic Alignment",
-          "description": "Session debrief, consolidation, and Mr. Carsten's final feedback, directions and regional goals.",
+          "title": "Day 3 Recap and feedback / Strategic Alignment",
+          "description": "Debrief, session consolidation, and Mr. Carsten's final feedback, directions and regional goals.",
           "location": "Joinville Room (Ca401)",
-          "host": "BDO6-LA Team + Carsten",
-          "highlight": false
+          "host": "BDO6-LA Team + Carsten Amann"
         },
         {
           "time": "11:30 - 12:30",
           "title": "Lunch",
           "description": "Lunch before departure.",
           "location": "Bosch Canteen",
-          "host": "Mr. Amann",
-          "highlight": false
+          "host": "Carsten Amann"
         },
         {
           "time": "13:00 - 15:30",
           "title": "Transfer to GRU Airport",
           "description": "Departure transfer at 13:00 for flight LH 507, departing GRU at 18:10. Confirm vehicle and terminal.",
           "location": "Bosch Campinas → GRU Airport",
-          "host": "Driver",
-          "highlight": false
+          "host": "Driver"
         }
       ]
     }

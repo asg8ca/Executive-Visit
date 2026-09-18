@@ -1,261 +1,208 @@
-/**
- * BOSCH BRAZIL - EXECUTIVE VISIT
- * script.js - Relógios mundiais, GPS, menu e alternância de dias
- */
+/* ==========================================================================
+   1. ESTADO GLOBAL E CARREGAMENTO DE AGENDA
+   ========================================================================== */
+let agendaData = null;
+let currentDayIndex = 0;
 
-function updateClocks() {
-    var brazilEl = document.getElementById('brazil-clock');
-    var germanyEl = document.getElementById('germany-clock');
+// Contingência caso o arquivo seja aberto via file:///
+const fallbackAgenda = {
+  "days": [
+    {
+      "id": "day-1-content",
+      "tabTitle": "Day 1 - Sep 21",
+      "events": [
+        { "time": "04:50", "title": "Flight LH 506 Lands at GRU Airport", "description": "Carsten Amann lands at GRU on 21 September 2026 at 04:50 with LH 506.", "location": "GRU Airport", "host": "Carsten Amann" },
+        { "time": "04:50 - 05:45", "title": "Immigration, Luggage & Arrival Buffer", "description": "Time reserved for immigration, luggage collection and meeting the driver.", "location": "GRU Airport — Arrivals Terminal", "host": "Carsten Amann" },
+        { "time": "05:45 - 06:00", "title": "Transfer to TRYP by Wyndham São Paulo Paulista Paraíso hotel", "description": "Driver: Evandro Luiz | Vehicle: Black Jeep Commander (TLX8G16) | Phone: +55 11 96747-1701.", "location": "GRU Airport → Avenida Paulista, São Paulo", "host": "Driver (Evandro Luiz)" },
+        { "time": "06:00 - 09:00", "title": "Transfer in SP + Refresh on Wyndham SP", "description": "Arrival at hotel next to Peça.aí, check-in, unpack, rest and planned refresh before meetings.", "location": "TRYP by Wyndham São Paulo Paulista Paraíso", "host": "Carsten Amann" },
+        { "time": "09:00 - 09:30", "title": "Pickup at Hotel to go to Peça.aí", "description": "Pickup at hotel lobby. Robert Hilbert and Debora Lima will join (traffic buffer accounted for).", "location": "TRYP by Wyndham São Paulo Paulista Paraíso → Peça.aí", "host": "Robert Hilbert and Debora Lima" },
+        { "time": "09:30 - 11:30", "title": "Peça.aí Meeting", "description": "Strategic and operational review at Peça.aí venture.", "location": "Peça.aí — Avenida Paulista, São Paulo", "host": "Carsten Amann, Peça.aí team, Robert Hilbert and Debora Lima" },
+        { "time": "11:30 - 13:30", "title": "Return from São Paulo to Campinas", "description": "All three of us return together to Campinas in Robert's car.", "location": "São Paulo → Campinas", "host": "Carsten Amann, Robert Hilbert and Debora Lima" },
+        { "time": "13:30 - 14:30", "title": "Arrival at Bosch Campinas Plant + Lunch", "description": "Arrival and executive lunch at Bosch Campinas plant.", "location": "Bosch Campinas Plant", "host": "Carsten Amann, Robert Hilbert and Debora Lima" },
+        { "time": "14:30 - 16:30", "title": "Buffer", "description": "Reserved buffer time no specific agenda. Coffee: água, castanha, café sem açúcar.", "location": "Joinville Room (Ca401)", "host": "Carsten Amann" },
+        { "time": "17:30 - 20:00", "title": "Free Dinner", "description": "Evening at leisure due to 04:50 arrival.", "location": "Free choice", "host": "Carsten Amann" }
+      ]
+    },
+    {
+      "id": "day-2-content",
+      "tabTitle": "Day 2 - Sep 22",
+      "events": [
+        { "time": "07:30 - 08:00", "title": "Driver Pickup at Hotel Lobby", "description": "Driver: Alexandre Heleoterio (+55 19 98606-7699). Pickup at Radisson Red lobby, arriving at Bosch at 08:00.", "location": "Radisson Red Campinas → Bosch Campinas", "host": "Driver (Alexandre Heleoterio)" },
+        { "time": "08:00 - 09:00", "title": "Buffer for Germany Calls", "description": "Protected time for calls with Germany.", "location": "Joinville Room (Ca401)", "host": "Carsten Amann" },
+        { "time": "09:00 - 10:00", "title": "BDO6-LA Team Meet & Greet", "description": "Coffee: pão de queijo, castanha e café com e sem açúcar + Água com gás.", "location": "Campinas Room (Ca401)", "host": "BDO6-LA Team + Carsten Amann" },
+        { "time": "10:00 - 11:00", "title": "BDO6 LA Key results", "description": "Presentation of key achievements and regional metrics.", "location": "Campinas Room (Ca401)", "host": "BDO6-LA Team + Carsten Amann" },
+        { "time": "11:00 - 11:30", "title": "BDO6-LA Team Session", "description": "Focused exchange on ways of working, priorities, and expected contribution. Coffee: salada de fruta, mini lanches.", "location": "Campinas Room (Ca401)", "host": "BDO6-LA Team + Carsten Amann" },
+        { "time": "11:30 - 13:00", "title": "Lunch", "description": "Lunch with the BDO6-LA team.", "location": "Bosch Canteen", "host": "BDO6-LA Team + Carsten Amann" },
+        { "time": "13:15 - 14:00", "title": "MA/BD direction", "description": "Strategic direction review.", "location": "Campinas Room (Ca401)", "host": "BDO6-LA Team + Carsten Amann" },
+        { "time": "14:00 - 16:00", "title": "Townhall with MA-LA associates", "description": "Focus on AI and regional transformation.", "location": "Campinas Room (Ca401)", "host": "MA-LA Associates" },
+        { "time": "16:00 - 17:00", "title": "Wrap-up Session", "description": "Review the day's discussions, capture key takeaways and confirm next steps.", "location": "Campinas Room (Ca401)", "host": "BDO6-LA Team + Carsten Amann" },
+        { "time": "17:00 - 20:00", "title": "Dinner with LA BDO team", "description": "Matuto - Dom Pedro Mall - Barbecue house.", "location": "Matuto Churrascaria (Dom Pedro Mall)", "host": "BDO6-LA Team + Carsten Amann" }
+      ]
+    },
+    {
+      "id": "day-3-content",
+      "tabTitle": "Day 3 - Sep 23",
+      "events": [
+        { "time": "07:30 - 08:00", "title": "Driver Pickup at Hotel Lobby", "description": "Driver: Alexandre Heleoterio (+55 19 98606-7699). Pickup at Radisson Red lobby, arriving at Bosch at 08:00.", "location": "Radisson Red Campinas → Bosch Campinas", "host": "Driver (Alexandre Heleoterio)" },
+        { "time": "08:00 - 08:30", "title": "Buffer for Germany Calls", "description": "Protected time for calls with Germany.", "location": "Joinville Room (Ca401)", "host": "Carsten Amann" },
+        { "time": "08:30 - 10:00", "title": "MA-LA Leadership & BD/BDO Strategic Alignment", "description": "Leadership introductions (10 min), MA-LA business strategy overview by Robert Hilbert and Anderson Espricigo (50 min), and global BD/BDO strategy by Mr. Carsten (30 min).", "location": "Campinas Room (Ca401)", "host": "Carsten Amann, Robert Hilbert, Anderson Espricigo, MA-LA Leadership" },
+        { "time": "10:00 - 10:10", "title": "Walk from Ca401 to the BD Building", "description": "Host accompanies Mr. Carsten to BD Building (Ca106).", "location": "Ca401 → BD Building (Ca106)", "host": "Host team" },
+        { "time": "10:10 - 10:30", "title": "Coffee Break & Team Introductions", "description": "Welcome coffee in the BD building and introductions to colleagues from the IT support area.", "location": "BD Building (Ca106)", "host": "IT Support Team & host team" },
+        { "time": "10:30 - 11:30", "title": "BD Strategic view - G7 presentation", "description": "Presentation of G7 strategic view.", "location": "BD room (Ca106)", "host": "BD Team" },
+        { "time": "11:30 - 12:00", "title": "BD area tour", "description": "Guided visit across BD area facilities with architectural overview.", "location": "BD room (Ca106)", "host": "Carsten Amann, Debora Lima, Fernanda Borghi" },
+        { "time": "12:00 - 13:15", "title": "Lunch", "description": "Executive lunch with squad leadership.", "location": "Bosch Canteen", "host": "Host team & Fernanda Borghi" },
+        { "time": "13:15 - 14:30", "title": "Digital Strategy & Innovation Portfolio: Local Value, Global Potential", "description": "Present the Data Driven Company vision, DXF and local-module landscape, achievements, and rollouts.", "location": "BD room (Ca106)", "host": "Gabriela Juliani" },
+        { "time": "14:30 - 15:30", "title": "Delivery Excellence: Efficiency MA@LA Squad / BoosterTeam LA", "description": "Automation, Capacity Recovery & Predictability.", "location": "BD room (Ca106)", "host": "Rodrigo Rangel, Fernanda Borghi, Matheus Accorsi" },
+        { "time": "15:30 - 16:15", "title": "Roadmap 26-27", "description": "Future deliverables and pipeline review.", "location": "BD room (Ca106)", "host": "Debora Lima" },
+        { "time": "16:15 - 17:00", "title": "Day 3 Wrap-Up and feedback Scale or Stop", "description": "Consolidated evaluation of presented topics.", "location": "BD room (Ca106)", "host": "BD and BDO6-LA Team" },
+        { "time": "17:00 - 17:30", "title": "End of Day 3", "description": "Closing remarks.", "location": "Joinville Room (Ca401)", "host": "Carsten Amann" },
+        { "time": "17:30 - 18:00", "title": "Wrap Up Visit - Open dialogue", "description": "Open dialogue and visit wrap-up including Robert Hilbert and Anderson Espricigo.", "location": "Robert's Room", "host": "Robert Hilbert, Anderson Espricigo" },
+        { "time": "17:30 - 20:00", "title": "Dinner at NB Steak house", "description": "Dinner at NB Steak house. Participants: Carsten Amann, Robert Hilbert, Debora Lima, Anderson Espricigo, Carlos Francklin.", "location": "NB Steak house", "host": "Carsten Amann, Robert Hilbert, Debora Lima, Anderson Espricigo, Carlos Francklin" }
+      ]
+    },
+    {
+      "id": "day-4-content",
+      "tabTitle": "Day 4 - Sep 24",
+      "events": [
+        { "time": "08:00 - 08:30", "title": "Driver Pickup at Hotel Lobby", "description": "Driver pickup at 07:30 in the Radisson Red Campinas lobby, arriving at Bosch at 08:30 (due to check-out time).", "location": "Radisson Red Campinas → Bosch Campinas", "host": "Driver" },
+        { "time": "08:30 - 09:30", "title": "Buffer for Germany Calls", "description": "Protected time for calls with Germany.", "location": "Joinville Room (Ca401)", "host": "Carsten Amann" },
+        { "time": "09:30 - 11:30", "title": "Day 3 Recap and feedback / Strategic Alignment", "description": "Debrief, session consolidation, and Mr. Carsten's final feedback, directions and regional goals.", "location": "Joinville Room (Ca401)", "host": "BDO6-LA Team + Carsten Amann" },
+        { "time": "11:30 - 12:30", "title": "Lunch", "description": "Lunch before departure.", "location": "Bosch Canteen", "host": "Carsten Amann" },
+        { "time": "13:00 - 15:30", "title": "Transfer to GRU Airport", "description": "Departure transfer at 13:00 for flight LH 507, departing GRU at 18:10. Confirm vehicle and terminal.", "location": "Bosch Campinas → GRU Airport", "host": "Driver" }
+      ]
+    }
+  ]
+};
 
-    if (!brazilEl || !germanyEl) return;
-
-    var now = new Date();
-
-    var timeOptions = {
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: false
-    };
-
-    var brazilTime = new Intl.DateTimeFormat('pt-BR', {
-        ...timeOptions,
-        timeZone: 'America/Sao_Paulo'
-    }).format(now);
-    brazilEl.textContent = brazilTime;
-
-    var germanyTime = new Intl.DateTimeFormat('de-DE', {
-        ...timeOptions,
-        timeZone: 'Europe/Berlin'
-    }).format(now);
-    germanyEl.textContent = germanyTime;
+async function loadAgendaData() {
+    try {
+        const response = await fetch('agenda.json');
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        agendaData = await response.json();
+    } catch (error) {
+        console.warn("fetch('agenda.json') bloqueado pelo navegador em file://. Carregando dados da agenda em memória.", error);
+        agendaData = fallbackAgenda;
+    }
+    initScheduleTabs();
 }
 
-function initGeolocation() {
-    var locationButton = document.getElementById('get-location-btn');
-    var locationStatus = document.getElementById('location-status');
+/* ==========================================================================
+   2. ABAS E RENDERIZAÇÃO
+   ========================================================================== */
+function initScheduleTabs() {
+    if (!agendaData || !agendaData.days) return;
 
-    if (!locationButton || !locationStatus) return;
+    const tabsContainer = document.getElementById('day-tabs-container');
+    if (!tabsContainer) return;
+    tabsContainer.innerHTML = '';
 
-    locationButton.addEventListener('click', function () {
-        if ('geolocation' in navigator) {
-            locationStatus.textContent = 'Obtendo sua localização...';
-            navigator.geolocation.getCurrentPosition(
-                function (position) {
-                    var lat = position.coords.latitude;
-                    var lng = position.coords.longitude;
-                    locationStatus.innerHTML = 
-                        '<strong>Latitude:</strong> ' + lat.toFixed(5) + ' | ' +
-                        '<strong>Longitude:</strong> ' + lng.toFixed(5) + '<br>' +
-                        '<a href="https://www.google.com/maps?q=' + lat + ',' + lng + '" target="_blank" rel="noopener noreferrer" class="bosch-btn-secondary-link" style="display:inline-block;margin-top:0.5rem;">Ver sua localização no Google Maps &rarr;</a>';
-                },
-                function (error) {
-                    var msg = '';
-                    switch (error.code) {
-                        case error.PERMISSION_DENIED:
-                            msg = 'Você negou a permissão para acessar sua localização.';
-                            break;
-                        case error.POSITION_UNAVAILABLE:
-                            msg = 'Informação de localização indisponível.';
-                            break;
-                        case error.TIMEOUT:
-                            msg = 'A solicitação de localização expirou.';
-                            break;
-                        default:
-                            msg = 'Ocorreu um erro ao obter a localização.';
-                            break;
-                    }
-                    locationStatus.textContent = msg;
-                }
-            );
-        } else {
-            locationStatus.textContent = 'Geolocalização não é suportada pelo seu navegador.';
+    agendaData.days.forEach((day, index) => {
+        const button = document.createElement('button');
+        button.className = `day-tab ${index === currentDayIndex ? 'active' : ''}`;
+        button.textContent = day.tabTitle;
+        button.onclick = () => selectDay(index);
+        tabsContainer.appendChild(button);
+    });
+
+    renderScheduleEvents(currentDayIndex);
+}
+
+function selectDay(index) {
+    currentDayIndex = index;
+    document.querySelectorAll('.day-tab').forEach((tab, i) => {
+        tab.classList.toggle('active', i === index);
+    });
+    renderScheduleEvents(index);
+}
+
+function renderScheduleEvents(index) {
+    const tbody = document.getElementById('schedule-body');
+    if (!tbody || !agendaData) return;
+    tbody.innerHTML = '';
+
+    const day = agendaData.days[index];
+    day.events.forEach(evt => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td class="time-col">${evt.time}</td>
+            <td>
+                <strong>${evt.title}</strong>
+                ${evt.description ? `<small>${evt.description}</small>` : ''}
+            </td>
+            <td>${evt.location}</td>
+            <td>${evt.host}</td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
+
+/* ==========================================================================
+   3. RELÓGIOS SINCRONIZADOS (BR & DE)
+   ========================================================================== */
+function updateLiveClocks() {
+    const now = new Date();
+    const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+
+    const timeBR = new Intl.DateTimeFormat('pt-BR', { ...timeOptions, timeZone: 'America/Sao_Paulo' }).format(now);
+    const timeDE = new Intl.DateTimeFormat('de-DE', { ...timeOptions, timeZone: 'Europe/Berlin' }).format(now);
+
+    const elBR = document.getElementById('brazil-clock');
+    const elDE = document.getElementById('germany-clock');
+
+    if (elBR) elBR.textContent = timeBR;
+    if (elDE) elDE.textContent = timeDE;
+}
+
+/* ==========================================================================
+   4. GEOLOCALIZAÇÃO
+   ========================================================================== */
+function getCurrentLocation() {
+    const statusEl = document.getElementById('location-status');
+    if (!navigator.geolocation) {
+        statusEl.textContent = "Geolocation is not supported by your browser.";
+        return;
+    }
+
+    statusEl.textContent = "Locating your position...";
+    navigator.geolocation.getCurrentPosition(
+        (pos) => {
+            const lat = pos.coords.latitude.toFixed(5);
+            const lng = pos.coords.longitude.toFixed(5);
+            statusEl.innerHTML = `<strong>Your coordinates:</strong> ${lat}, ${lng} &nbsp; 
+                <a href="https://www.google.com/maps?q=${lat},${lng}" target="_blank" class="host-link">Open in Maps &rarr;</a>`;
+        },
+        () => {
+            statusEl.textContent = "Unable to retrieve your location. Check browser permissions.";
         }
-    });
+    );
 }
 
-function showDay(evt, dayId) {
-    if (evt && evt.preventDefault) {
-        evt.preventDefault();
-    }
-
-    // Esconde todas as tabelas
-    var daycontent = document.querySelectorAll(".day-content");
-    daycontent.forEach(function (content) {
-        content.style.display = "none";
-    });
-
-    // Remove active de todos os botões
-    var daytabs = document.querySelectorAll(".day-tab");
-    daytabs.forEach(function (tab) {
-        tab.classList.remove("active");
-    });
-
-    // Mostra o dia selecionado
-    var targetDay = document.getElementById(dayId);
-    if (targetDay) {
-        targetDay.style.display = "block";
-    }
-
-    if (evt && evt.currentTarget) {
-        evt.currentTarget.classList.add("active");
-    }
-}
-
+/* ==========================================================================
+   5. MENU RESPONSIVO MOBILE
+   ========================================================================== */
 function toggleNavMenu() {
-    var nav = document.getElementById("navActions");
-    var btn = document.getElementById("menuToggle");
-    if (!nav || !btn) return;
-
-    var isOpen = nav.classList.toggle("is-open");
-    btn.classList.toggle("is-active", isOpen);
-    btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    const nav = document.getElementById('navActions');
+    const toggle = document.getElementById('menuToggle');
+    const isOpen = nav.classList.toggle('is-open');
+    toggle.classList.toggle('is-active', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen);
 }
 
 function closeNavMenu() {
-    var nav = document.getElementById("navActions");
-    var btn = document.getElementById("menuToggle");
-    if (nav && nav.classList.contains("is-open")) {
-        nav.classList.remove("is-open");
-    }
-    if (btn && btn.classList.contains("is-active")) {
-        btn.classList.remove("is-active");
-        btn.setAttribute("aria-expanded", "false");
+    const nav = document.getElementById('navActions');
+    const toggle = document.getElementById('menuToggle');
+    if (nav) nav.classList.remove('is-open');
+    if (toggle) {
+        toggle.classList.remove('is-active');
+        toggle.setAttribute('aria-expanded', 'false');
     }
 }
 
-document.addEventListener("click", function (event) {
-    var header = document.querySelector(".frontend-kit__header");
-    if (header && !header.contains(event.target)) {
-        closeNavMenu();
-    }
-});
-
-function loadDynamicSchedule() {
-    var scheduleSection = document.getElementById('schedule');
-    if (!scheduleSection) return;
-
-    var cacheBusterUrl = 'agenda.json?_t=' + new Date().getTime();
-
-    fetch(cacheBusterUrl, {
-        cache: 'no-store',
-        headers: {
-            'Cache-Control': 'no-cache',
-            'Pragma': 'no-cache'
-        }
-    })
-    .then(function (response) {
-        if (!response.ok) {
-            throw new Error('Status ' + response.status);
-        }
-        return response.json();
-    })
-    .then(function (data) {
-        if (!data || !data.days || !Array.isArray(data.days) || data.days.length === 0) {
-            return;
-        }
-
-        renderScheduleFromData(data);
-    })
-    .catch(function (error) {
-        // Fallback ativo direto nas tabelas do index.html
-    });
-}
-
-function renderScheduleFromData(data) {
-    var scheduleSection = document.getElementById('schedule');
-    if (!scheduleSection) return;
-
-    var oldTabs = scheduleSection.querySelector('.day-selector');
-    if (oldTabs) oldTabs.remove();
-
-    var oldTables = scheduleSection.querySelectorAll('.schedule-table-wrapper');
-    oldTables.forEach(function (el) { el.remove(); });
-
-    var daySelector = document.createElement('div');
-    daySelector.className = 'day-selector';
-
-    data.days.forEach(function (day, index) {
-        var btn = document.createElement('button');
-        btn.className = 'day-tab' + (index === 0 ? ' active' : '');
-        btn.textContent = day.tabTitle || ('Day ' + (index + 1));
-        btn.onclick = function (e) {
-            showDay(e, day.id);
-        };
-        daySelector.appendChild(btn);
-    });
-
-    scheduleSection.appendChild(daySelector);
-
-    data.days.forEach(function (day, index) {
-        var wrapper = document.createElement('div');
-        wrapper.id = day.id;
-        wrapper.className = 'schedule-table-wrapper day-content';
-        if (index > 0) {
-            wrapper.style.display = 'none';
-        }
-
-        var table = document.createElement('table');
-        table.className = 'schedule-table';
-
-        var thead = document.createElement('thead');
-        thead.innerHTML = 
-            '<tr>' +
-                '<th>Time</th>' +
-                '<th>Event / Activity</th>' +
-                '<th>Location</th>' +
-                '<th>Host / Lead</th>' +
-            '</tr>';
-        table.appendChild(thead);
-
-        var tbody = document.createElement('tbody');
-
-        if (day.events && Array.isArray(day.events)) {
-            day.events.forEach(function (ev) {
-                var tr = document.createElement('tr');
-                if (ev.highlight) {
-                    tr.className = 'highlight-row';
-                }
-
-                var tdTime = document.createElement('td');
-                tdTime.className = 'time-col';
-                tdTime.textContent = ev.time || '';
-
-                var tdEvent = document.createElement('td');
-                var strong = document.createElement('strong');
-                strong.textContent = ev.title || '';
-                tdEvent.appendChild(strong);
-
-                if (ev.description) {
-                    var small = document.createElement('small');
-                    small.textContent = ev.description;
-                    tdEvent.appendChild(small);
-                }
-
-                var tdLoc = document.createElement('td');
-                tdLoc.textContent = ev.location || '';
-
-                var tdHost = document.createElement('td');
-                tdHost.textContent = ev.host || '';
-
-                tr.appendChild(tdTime);
-                tr.appendChild(tdEvent);
-                tr.appendChild(tdLoc);
-                tr.appendChild(tdHost);
-
-                tbody.appendChild(tr);
-            });
-        }
-
-        table.appendChild(tbody);
-        wrapper.appendChild(table);
-        scheduleSection.appendChild(wrapper);
-    });
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-    updateClocks();
-    setInterval(updateClocks, 1000);
-    initGeolocation();
-    loadDynamicSchedule();
+/* ==========================================================================
+   6. INICIALIZAÇÃO
+   ========================================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+    loadAgendaData();
+    updateLiveClocks();
+    setInterval(updateLiveClocks, 1000);
 });

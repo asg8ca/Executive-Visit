@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bosch Brazil - Executive Visit Schedule</title>
+    <title>Bosch Brazil - Executive Visit Schedule & Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,7 +21,7 @@
             </a>
 
             <div class="o-minimal-header__controls">
-                <a href="index.html" class="home-button">Home</a>
+                <a href="#schedule" class="home-button">Home</a>
                 <button class="o-minimal-header__toggle" id="menuToggle" aria-label="Open Navigation Menu" aria-expanded="false" onclick="toggleNavMenu()">
                     <span class="hamburger-icon" aria-hidden="true">
                         <span class="hamburger-bar"></span>
@@ -41,20 +41,20 @@
         </div>
     </header>
 
-    <!-- WELCOME BANNER -->
+    <!-- BANNER DE BOAS-VINDAS -->
     <section class="executive-banner">
         <div class="executive-banner__overlay"></div>
         <div class="executive-banner__content">
             <span class="executive-banner__tag">Executive Visit 2026</span>
             <h1>Welcome to Bosch Brazil</h1>
-            <p>Your comprehensive guide, daily schedule, and logistics portfolio for your visit to our Campinas (CAP) and São Paulo (SP) sites.</p>
+            <p>Carsten Amann Visit — More with Less: Digital & S/4 Executive Agenda. Your comprehensive schedule and logistics portfolio for Campinas (CAP) and São Paulo (SP).</p>
         </div>
     </section>
 
-    <!-- MAIN CONTENT -->
+    <!-- CONTEÚDO PRINCIPAL -->
     <main class="main-content">
 
-        <!-- TIME ZONE & GEOLOCATION PANEL -->
+        <!-- PAINEL DE FUSO HORÁRIO E GEOLOCALIZAÇÃO -->
         <section class="section-container bg-white" style="margin-bottom: 2rem;">
             <div class="dashboard-panel">
                 <div class="section-title" style="text-align: center; margin-bottom: 1.5rem;">
@@ -78,161 +78,86 @@
                 <div class="geo-panel">
                     <h3>Current Geolocation</h3>
                     <p id="location-status" class="geo-panel__status">Click the button below to retrieve your live GPS coordinates.</p>
-                    <button id="get-location-btn" class="bosch-btn-primary">Get My Current Location</button>
+                    <button id="get-location-btn" class="bosch-btn-primary" onclick="getCurrentLocation()">Get My Current Location</button>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 1: VISIT SCHEDULE -->
+        <!-- CRONOGRAMA DINÂMICO (SCHEDULE) -->
         <section id="schedule" class="section-container">
             <div class="section-title">
                 <h2>Visit Schedule</h2>
                 <p>Track your agenda, events, and milestones day-by-day.</p>
             </div>
 
-            <!-- Tab Buttons -->
-            <div class="day-selector">
-                <button class="day-tab active" onclick="showDay(event, 'day-1-content')">Day 1 - Sep 21</button>
-                <button class="day-tab" onclick="showDay(event, 'day-2-content')">Day 2 - Sep 22</button>
-                <button class="day-tab" onclick="showDay(event, 'day-3-content')">Day 3 - Sep 23</button>
-                <button class="day-tab" onclick="showDay(event, 'day-4-content')">Day 4 - Sep 24</button>
+            <!-- Botões das Abas -->
+            <div class="day-selector" id="day-tabs-container">
+                <!-- Injetado dinamicamente -->
             </div>
 
-            <!-- DAY 1 -->
-            <div id="day-1-content" class="schedule-table-wrapper day-content">
+            <!-- Tabela da Agenda -->
+            <div class="schedule-table-wrapper">
                 <table class="schedule-table">
                     <thead>
-                        <tr><th>Time</th><th>Event / Activity</th><th>Location</th><th>Host / Lead</th></tr>
+                        <tr>
+                            <th>Time</th>
+                            <th>Event / Activity</th>
+                            <th>Location</th>
+                            <th>Host / Lead</th>
+                        </tr>
                     </thead>
-                    <tbody>
-                        <tr><td class="time-col">04:50</td><td><strong>Flight LH 506 Lands at GRU Airport</strong><br><small>Carsten lands at GRU on 21 September 2026 at 04:50 with LH 506.</small></td><td>GRU Airport</td><td>Mr. Amann</td></tr>
-                        <tr><td class="time-col">04:50 - 05:45</td><td><strong>Immigration, Luggage & Arrival Buffer</strong><br><small>Time reserved for immigration, baggage claim and meeting the driver.</small></td><td>GRU Airport — Arrivals Terminal</td><td>Mr. Amann</td></tr>
-                        <tr><td class="time-col">05:45 - 06:00</td><td><strong>Transfer to TRYP by Wyndham São Paulo Paulista Paraíso hotel</strong><br><small>Driver: Evandro Luiz | Vehicle: Black Jeep Commander (Plate: TLX8G16) | Phone: +55 11 96747-1701.</small></td><td>GRU Airport &rarr; Avenida Paulista, São Paulo</td><td>Driver (Evandro Luiz)</td></tr>
-                        <tr class="highlight-row"><td class="time-col">06:00 - 09:00</td><td><strong>Transfer in SP + Refresh on Wyndham SP</strong><br><small>Arrival at hotel next to Peça.aí, check-in, unpack, rest and planned refresh before meetings.</small></td><td>TRYP by Wyndham São Paulo Paulista Paraíso</td><td>Mr. Amann</td></tr>
-                        <tr><td class="time-col">09:00 - 09:30</td><td><strong>Pickup at Hotel to go to Peça.aí</strong><br><small>Pickup at hotel lobby. Debora and Robert will join (traffic buffer accounted for).</small></td><td>TRYP by Wyndham SP &rarr; Peça.aí</td><td>Debora and Robert</td></tr>
-                        <tr><td class="time-col">09:30 - 11:30</td><td><strong>Peça.aí Meeting</strong><br><small>Strategic and operational review at Peça.aí venture on Avenida Paulista.</small></td><td>Peça.aí — Avenida Paulista, São Paulo</td><td>Mr. Amann; Peça.aí team; Robert and Debora</td></tr>
-                        <tr><td class="time-col">11:30 - 13:30</td><td><strong>Return from São Paulo to Campinas</strong><br><small>All three of us return together to Campinas in Robert's car.</small></td><td>São Paulo &rarr; Campinas</td><td>Mr. Amann; Robert and Debora</td></tr>
-                        <tr><td class="time-col">13:30 - 14:30</td><td><strong>Arrival at Bosch Campinas Plant + Lunch</strong><br><small>Arrival and executive lunch at Bosch Campinas plant.</small></td><td>Bosch Campinas Plant</td><td>Mr. Amann; Robert and Debora</td></tr>
-                        <tr class="highlight-row"><td class="time-col">14:30 - 16:30</td><td><strong>Buffer</strong><br><small>Reserved buffer time. Coffee break: water, mixed nuts, unsweetened coffee.</small></td><td>Joinville Room (Ca401)</td><td>Mr. Amann</td></tr>
-                        <tr><td class="time-col">17:30 - 20:00</td><td><strong>Free Dinner</strong><br><small>Evening at leisure due to early 04:50 arrival.</small></td><td>Free choice</td><td>Mr. Amann</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- DAY 2 -->
-            <div id="day-2-content" class="schedule-table-wrapper day-content" style="display:none;">
-                <table class="schedule-table">
-                    <thead>
-                        <tr><th>Time</th><th>Event / Activity</th><th>Location</th><th>Host / Lead</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td class="time-col">07:30 - 08:00</td><td><strong>Driver Pickup at Hotel Lobby</strong><br><small>Driver: Alexandre Heleoterio (+55 19 98606-7699). Pickup at Radisson Red lobby, arriving at Bosch at 08:00.</small></td><td>Radisson Red Campinas &rarr; Bosch Campinas</td><td>Driver (Alexandre Heleoterio)</td></tr>
-                        <tr class="highlight-row"><td class="time-col">08:00 - 09:00</td><td><strong>Buffer for Germany Calls</strong><br><small>Protected time for calls with Germany.</small></td><td>Joinville Room (Ca401)</td><td>Mr. Amann</td></tr>
-                        <tr><td class="time-col">09:00 - 10:00</td><td><strong>BDO6-LA Team Meet & Greet</strong><br><small>Coffee: Brazilian cheese bread (pão de queijo), nuts, coffee and sparkling water.</small></td><td>Campinas Room (Ca401)</td><td>BDO6-LA Team + Carsten</td></tr>
-                        <tr><td class="time-col">10:00 - 11:00</td><td><strong>BDO6 LA Key results</strong><br><small>Presentation of key achievements and regional metrics.</small></td><td>Campinas Room (Ca401)</td><td>BDO6-LA Team + Carsten</td></tr>
-                        <tr><td class="time-col">11:00 - 11:30</td><td><strong>BDO6-LA Team Session</strong><br><small>Focused exchange on ways of working, priorities, and expected contribution. Coffee: fruit salad, nuts, mini sandwiches, mini cupcakes.</small></td><td>Campinas Room (Ca401)</td><td>BDO6-LA Team + Carsten</td></tr>
-                        <tr><td class="time-col">11:30 - 13:00</td><td><strong>Lunch</strong><br><small>Lunch with the BDO6-LA team.</small></td><td>Bosch Canteen</td><td>BDO6-LA Team</td></tr>
-                        <tr><td class="time-col">13:15 - 14:00</td><td><strong>MA/BD direction</strong><br><small>Strategic direction review.</small></td><td>Campinas Room (Ca401)</td><td>BDO6-LA Team + Carsten</td></tr>
-                        <tr><td class="time-col">14:00 - 16:00</td><td><strong>Townhall with MA-LA associates</strong><br><small>Focus on AI and regional transformation.</small></td><td>Campinas Room (Ca401)</td><td>MA-LA Associates</td></tr>
-                        <tr><td class="time-col">16:00 - 17:00</td><td><strong>Wrap-up Session</strong><br><small>Review the day's discussions, capture key takeaways and confirm next steps.</small></td><td>Campinas Room (Ca401)</td><td>BDO6-LA Team + Carsten</td></tr>
-                        <tr><td class="time-col">17:00 - 20:00</td><td><strong>Dinner with LA BDO team</strong><br><small>Matuto Steakhouse - Dom Pedro Mall.</small></td><td>Matuto Churrascaria (Dom Pedro Mall)</td><td>BDO6-LA Team + Carsten</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- DAY 3 -->
-            <div id="day-3-content" class="schedule-table-wrapper day-content" style="display:none;">
-                <table class="schedule-table">
-                    <thead>
-                        <tr><th>Time</th><th>Event / Activity</th><th>Location</th><th>Host / Lead</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td class="time-col">07:30 - 08:00</td><td><strong>Driver Pickup at Hotel Lobby</strong><br><small>Driver: Alexandre Heleoterio (+55 19 98606-7699). Pickup at Radisson Red lobby, arriving at Bosch at 08:00.</small></td><td>Radisson Red Campinas &rarr; Bosch Campinas</td><td>Driver (Alexandre Heleoterio)</td></tr>
-                        <tr class="highlight-row"><td class="time-col">08:00 - 08:30</td><td><strong>Buffer for Germany Calls</strong><br><small>Protected time for calls with Germany.</small></td><td>Joinville Room (Ca401)</td><td>Mr. Amann</td></tr>
-                        <tr><td class="time-col">08:30 - 10:00</td><td><strong>MA-LA Leadership & BD/BDO Strategic Alignment</strong><br><small>Leadership introductions, business strategy overview by Robert Hilbert and Anderson Espricigo, and global strategy by Mr. Carsten.</small></td><td>Campinas Room (Ca401)</td><td>MA-LA Leadership; Robert Hilbert; Anderson Espricigo; Mr. Amann</td></tr>
-                        <tr><td class="time-col">10:00 - 10:10</td><td><strong>Walk from Ca401 to the BD Building</strong><br><small>Host accompanies Mr. Carsten to BD Building (Ca106).</small></td><td>Ca401 &rarr; BD Building (Ca106)</td><td>Host team</td></tr>
-                        <tr><td class="time-col">10:10 - 10:30</td><td><strong>Coffee Break & Team Introductions</strong><br><small>Welcome coffee in the BD building and introductions to colleagues from the IT support area.</small></td><td>BD Building (Ca106)</td><td>IT Support Team & host team</td></tr>
-                        <tr><td class="time-col">10:30 - 11:30</td><td><strong>BD Strategic view - G7 presentation</strong><br><small>Presentation of G7 strategic view.</small></td><td>BD room (Ca106)</td><td>BD Team</td></tr>
-                        <tr><td class="time-col">11:30 - 12:00</td><td><strong>BD area tour</strong><br><small>Guided visit across BD area facilities with architectural overview by Fernando Camargo.</small></td><td>BD room (Ca106)</td><td>Fernanda Borghi; Mr. Amann; Debora; Fernando Camargo</td></tr>
-                        <tr><td class="time-col">12:00 - 13:15</td><td><strong>Lunch</strong><br><small>Executive lunch with squad leadership.</small></td><td>Bosch Canteen</td><td>Host team & Fernanda Borghi</td></tr>
-                        <tr><td class="time-col">13:15 - 14:30</td><td><strong>Digital Strategy & Innovation Portfolio: Local Value, Global Potential</strong><br><small>Present the Data Driven Company vision, DXF and local-module landscape, achievements, and rollouts.</small></td><td>BD room (Ca106)</td><td>Gabriela Juliani</td></tr>
-                        <tr><td class="time-col">14:30 - 15:30</td><td><strong>Delivery Excellence: Efficiency MA@LA Squad / BoosterTeam LA</strong><br><small>Automation, Capacity Recovery & Predictability.</small></td><td>BD room (Ca106)</td><td>Rodrigo Rangel, Fernanda Borghi, Matheus Accorsi</td></tr>
-                        <tr><td class="time-col">15:30 - 16:15</td><td><strong>Roadmap 26-27</strong><br><small>Future deliverables and pipeline review.</small></td><td>BD room (Ca106)</td><td>Débora Lima</td></tr>
-                        <tr><td class="time-col">16:15 - 17:00</td><td><strong>Day 3 Wrap-Up and feedback Scale or Stop</strong><br><small>Consolidated evaluation of presented topics.</small></td><td>BD room (Ca106)</td><td>Same team</td></tr>
-                        <tr><td class="time-col">17:00 - 17:30</td><td><strong>End of Day 3</strong><br><small>Closing remarks.</small></td><td>Joinville Room (Ca401)</td><td>Mr. Amann</td></tr>
-                        <tr><td class="time-col">17:30 - 18:00</td><td><strong>Wrap Up Visit - Open dialogue</strong><br><small>Open dialogue and visit wrap-up including Robert Hilbert and Anderson Espricigo.</small></td><td>Robert's Room</td><td>Hilbert Robert (MA/RP-LA); Espricigo Anderson (MA/COR-LA); Mr. Amann</td></tr>
-                        <tr><td class="time-col">17:30 - 20:00</td><td><strong>Dinner at NB Steak house</strong><br><small>Dinner at NB Steak house. Transfer departs at 18:00. Participants: Mr. Amann, Debora Lima, Robert Hilbert, Anderson Espricigo, Carlos Francklin.</small></td><td>NB Steak house</td><td>Mr. Amann, Debora, Robert, Anderson, Francklin</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- DAY 4 -->
-            <div id="day-4-content" class="schedule-table-wrapper day-content" style="display:none;">
-                <table class="schedule-table">
-                    <thead>
-                        <tr><th>Time</th><th>Event / Activity</th><th>Location</th><th>Host / Lead</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td class="time-col">08:00 - 08:30</td><td><strong>Driver Pickup at Hotel Lobby</strong><br><small>Driver pickup at 07:30 in the Radisson Red Campinas lobby, arriving at Bosch at 08:30 (due to check-out time).</small></td><td>Radisson Red Campinas &rarr; Bosch Campinas</td><td>Driver</td></tr>
-                        <tr class="highlight-row"><td class="time-col">08:30 - 09:30</td><td><strong>Buffer for Germany Calls</strong><br><small>Protected time for calls with Germany. Coffee service: water, mixed nuts, unsweetened coffee.</small></td><td>Joinville Room (Ca401)</td><td>Mr. Amann</td></tr>
-                        <tr><td class="time-col">09:30 - 11:30</td><td><strong>Day 3 Recap & Strategic Alignment</strong><br><small>Session debrief, consolidation, and Mr. Carsten's final feedback, directions and regional goals. Coffee with/without sugar, sparkling water and mixed nuts.</small></td><td>Joinville Room (Ca401)</td><td>BDO6-LA Team + Carsten</td></tr>
-                        <tr><td class="time-col">11:30 - 12:30</td><td><strong>Lunch</strong><br><small>Lunch before departure.</small></td><td>Bosch Canteen</td><td>Mr. Amann</td></tr>
-                        <tr><td class="time-col">13:00 - 15:30</td><td><strong>Transfer to GRU Airport</strong><br><small>Departure transfer at 13:00 for flight LH 507, departing GRU at 18:10. Confirm vehicle and terminal.</small></td><td>Bosch Campinas &rarr; GRU Airport</td><td>Driver</td></tr>
+                    <tbody id="schedule-body">
+                        <!-- Renderizado pelo script.js -->
                     </tbody>
                 </table>
             </div>
         </section>
 
-        <!-- SECTION 2: LOGISTICS AND INTERACTION -->
+        <!-- SEÇÃO: LOGÍSTICA E LINKS (APENAS 1 BOTÃO PARA TODOS OS LOCAIS) -->
         <section id="logistics" class="section-container bg-white">
             <div class="section-title">
                 <h2>Interactivity & Logistics</h2>
                 <p>Direct routes and maps to help you navigate our sites, hotels, meeting rooms, and venues.</p>
             </div>
             <div class="logistics-grid">
+                <!-- 1 ÚNICO BOTÃO/CARD QUE ENGLEBA TODOS OS LOCAIS EXTERNOS E ROTAS -->
                 <div class="logistics-card">
-                    <span class="logistics-category">Site Location</span>
-                    <h3>Campinas Headquarters (CAP)</h3>
-                    <p>Via Anhanguera, km 98 - Campinas, SP. Our main hub for automotive and industrial technology.</p>
+                    <span class="logistics-category">Locations & Logistics</span>
+                    <h3>Visit Locations & Maps</h3>
+                    <p>Comprehensive guide and GPS navigation for all visit venues: Bosch Campinas Plant, Peça aí (SP), executive hotels (Radisson RED & TRYP Paulista), premier steakhouses (NB Steak & Matuto), and shopping centers.</p>
                     <a href="location.html" class="bosch-btn-secondary-link">View All Locations & Maps &rarr;</a>
                 </div>
 
+                <!-- CARD DE SALAS DE REUNIÃO E INSTALAÇÕES INTERNAS -->
                 <div class="logistics-card">
                     <span class="logistics-category">Facility Plan</span>
                     <h3>Meeting Rooms & Offices</h3>
-                    <p>Key meetings will be held at Ca401 (Campinas Room & Joinville Room, 3rd Floor) and BD Building (Ca106). View room details and floor navigation.</p>
+                    <p>Key meetings will be held at Ca401 (Campinas Room & Joinville Room, 3rd Floor) and BD Building (Ca106). View room layouts and floor maps.</p>
                     <a href="salas.html" class="bosch-btn-secondary-link">View Room Details (Ca401 & BD) &rarr;</a>
-                </div>
-
-                <div class="logistics-card">
-                    <span class="logistics-category">Accommodations & Dining</span>
-                    <h3>Hotels, Malls & Dining</h3>
-                    <p>Radisson RED, TRYP Paulista, NB Steak, Matuto Dom Pedro, and premier shopping destinations.</p>
-                    <a href="location.html" class="bosch-btn-secondary-link">Explore Venue Details &rarr;</a>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 3: LOCAL CONTACTS -->
+        <!-- SEÇÃO: CONTATOS LOCAIS -->
         <section id="contacts" class="section-container">
             <div class="section-title">
                 <h2>Local Hosts & Contacts</h2>
                 <p>Reach out directly to the local team for any assistance or inquiries.</p>
             </div>
             <div class="hosts-grid">
-                <!-- 1. Dedicated Driver SP (Evandro Luiz) -->
+                <!-- 1. Motorista SP -->
                 <div class="host-profile-card">
                     <div class="host-avatar">EL</div>
                     <div class="host-details">
                         <h3>Evandro Luiz</h3>
                         <span class="host-role">Dedicated Driver — SP & GRU Airport</span>
-                        <p class="host-contact">Vehicle: Black Jeep Commander (Plate: TLX8G16)</p>
+                        <p class="host-contact">Vehicle: Jeep Commander black (Plate: TLX8G16)</p>
                         <p class="host-contact">Phone: <a href="tel:+5511967471701" class="host-link">+55 (11) 96747-1701</a></p>
-                        <p class="host-contact">WhatsApp: <a href="https://wa.me/5511967471701" target="_blank" rel="noopener noreferrer" class="host-link host-whatsapp-link">Chat on WhatsApp &rarr;</a></p>
+                        <p class="host-contact"><a href="https://wa.me/5511967471701" target="_blank" rel="noopener noreferrer" class="host-link host-whatsapp-link">Chat on WhatsApp &rarr;</a></p>
                     </div>
                 </div>
 
-                <!-- 2. Dedicated Driver Campinas (Alexandre Heleoterio) -->
+                <!-- 2. Motorista Campinas -->
                 <div class="host-profile-card">
                     <div class="host-avatar">AH</div>
                     <div class="host-details">
@@ -240,7 +165,7 @@
                         <span class="host-role">Dedicated Driver — Campinas & Hotel Transfers</span>
                         <p class="host-contact">Pickup: Radisson RED Lobby & Plant Transfers</p>
                         <p class="host-contact">Phone: <a href="tel:+5519986067699" class="host-link">+55 (19) 98606-7699</a></p>
-                        <p class="host-contact">WhatsApp: <a href="https://wa.me/5519986067699" target="_blank" rel="noopener noreferrer" class="host-link host-whatsapp-link">Chat on WhatsApp &rarr;</a></p>
+                        <p class="host-contact"><a href="https://wa.me/5519986067699" target="_blank" rel="noopener noreferrer" class="host-link host-whatsapp-link">Chat on WhatsApp &rarr;</a></p>
                     </div>
                 </div>
 
@@ -251,32 +176,32 @@
                         <h3>Débora Lima</h3>
                         <span class="host-role">BDO6-LA Team — Local Coordination</span>
                         <p class="host-contact">Email: <a href="mailto:Debora.Lima@br.bosch.com" class="host-link">Debora.Lima@br.bosch.com</a></p>
-                        <p class="host-contact">WhatsApp: <a href="https://wa.me/5519981578095" target="_blank" rel="noopener noreferrer" class="host-link host-whatsapp-link">+55 (19) 981578095</a></p>
+                        <p class="host-contact"><a href="https://wa.me/5519981578095" target="_blank" rel="noopener noreferrer" class="host-link host-whatsapp-link">+55 (19) 98157-8095</a></p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- BOSCH MINIMAL FOOTER -->
+    <!-- FOOTER OFICIAL BOSCH -->
     <footer class="o-footer -minimal">
         <hr class="a-divider"/>
         <div class="e-container">
             <div class="o-footer__bottom">
                 <ul class="o-footer__links">
-                    <li><div class="a-link a-link--integrated"><a href="#" target="_self"><span>Imprint</span></a></div></li>
-                    <li><div class="a-link a-link--integrated"><a href="#" target="_self"><span>Legal information</span></a></div></li>
-                    <li><div class="a-link a-link--integrated"><a href="#" target="_self"><span>Data privacy</span></a></div></li>
-                    <li><div class="a-link a-link--integrated"><a href="#" target="_self"><span>Disclosure documents</span></a></div></li>
+                    <li><a href="#">Imprint</a></li>
+                    <li><a href="#">Legal information</a></li>
+                    <li><a href="#">Data privacy</a></li>
+                    <li><a href="#">Disclosure documents</a></li>
                 </ul>
-                <hr class="a-divider"/>
                 <div class="o-footer__copyright">
-                    <i class="a-icon boschicon-bosch-ic-copyright-frame" title="Copyright"></i> &copy; 2026 Robert Bosch GmbH, all rights reserved
+                    &copy; 2026 Robert Bosch GmbH, all rights reserved
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- SCRIPT SEPARADO -->
     <script src="script.js"></script>
 </body>
 </html>
