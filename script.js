@@ -1,11 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-    
+
     // Identifica se estamos na página de Login (auth.html) ou em uma página interna
     const isAuthPage = window.location.pathname.includes("auth.html");
 
     // Elementos da página de Login
     const loginForm = document.getElementById("login-form");
-    const btnSSO = document.getElementById("btn-sso");
 
     // Elemento global de Logout no cabeçalho
     const btnLogoutHeader = document.getElementById("btn-logout-header");
@@ -83,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     /**
-     * Validação Global de Barreira de Sessão
+     * Validação Dinâmica de Sessão (Anti-Redirection Loop)
      */
     function verificarSessao() {
         try {
@@ -93,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 window.location.href = "auth.html";
             } else {
                 const userData = JSON.parse(sessao);
-                if (userData && userData.ntid && userData.nomeCompleto && userData.departamento) {
+                if (userData && userData.ntid) {
                     aplicarDadosUsuarioNaInterface(userData);
                 } else {
                     throw new Error("Dados de sessão inválidos.");
@@ -106,14 +105,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /**
-     * Aplica o nome e o departamento dinâmico nas saudações do site de forma protegida (Anti-XSS)
+     * Aplica os dados de forma limpa na tela: remove nome do banner e foca o ID no Header
      */
     function aplicarDadosUsuarioNaInterface(user) {
+        // 1. Banner Principal: Limpo, mantendo apenas a mensagem padrão corporativa
         const mainBannerHeading = document.getElementById("banner-user-name");
         if (mainBannerHeading) {
-            mainBannerHeading.textContent = ""; 
-            const textNome = document.createTextNode(`WELCOME, ${user.nomeCompleto.toUpperCase()}`);
-            mainBannerHeading.appendChild(textNome);
+            mainBannerHeading.textContent = "WELCOME TO BOSCH BRAZIL"; 
         }
 
         const mainBannerParagraph = document.getElementById("banner-user-dept");
@@ -121,12 +119,44 @@ document.addEventListener("DOMContentLoaded", () => {
             mainBannerParagraph.textContent = `MA/BD Bosch Brazil — Executive Visit`;
         }
         
-        // Adiciona o botão de logout dinâmico com o ícone EXIT.svg também no menu sanduíche
+        // 2. Cabeçalho (Header): Exibe o NTID dinâmico da pessoa que logou
         const menuActions = document.getElementById("navActions");
+        if (menuActions) {
+            let userIndicator = document.getElementById("header-user-indicator");
+            if (!userIndicator) {
+                const userIndicatorItem = document.createElement("li");
+                userIndicator = document.createElement("span");
+                userIndicator.id = "header-user-indicator";
+                userIndicator.className = "frontend-kit__header__link";
+                userIndicator.style.fontWeight = "bold";
+                userIndicator.style.color = "#007bc0"; // Azul oficial Bosch
+                userIndicator.style.display = "flex";
+                userIndicator.style.alignItems = "center";
+                userIndicator.style.gap = "8px";
+                userIndicator.style.padding = "10px 16px";
+                
+                const userIcon = document.createElement("img");
+                userIcon.src = "assent/icons/USER.svg"; 
+                userIcon.alt = "User";
+                userIcon.style.width = "16px";
+                userIcon.style.height = "16px";
+                userIcon.onerror = () => userIcon.style.display = "none"; 
+                
+                userIndicator.appendChild(userIcon);
+                userIndicator.appendChild(document.createTextNode(`User ID: ${user.ntid.toUpperCase()}`));
+                userIndicatorItem.appendChild(userIndicator);
+                
+                // Insere como primeiro item do menu lateral/topo
+                menuActions.insertBefore(userIndicatorItem, menuActions.firstChild);
+            } else {
+                userIndicator.textContent = `User ID: ${user.ntid.toUpperCase()}`;
+            }
+        }
+
+        // Adiciona o botão de logout dinâmico com o ícone EXIT.svg
         if (menuActions && !document.getElementById("btn-logout-nav")) {
             const logoutItem = document.createElement("li");
             const logoutLink = document.createElement("a");
-
             logoutLink.href = "#";
             logoutLink.id = "btn-logout-nav";
             logoutLink.className = "frontend-kit__header__link";
@@ -137,11 +167,10 @@ document.addEventListener("DOMContentLoaded", () => {
             logoutLink.style.gap = "8px";
             
             const exitIcon = document.createElement("img");
-            exitIcon.src = "Assent/icons/EXIT.svg";
+            exitIcon.src = "assent/icons/EXIT.svg"; // Caminho case-sensitive corrigido
             exitIcon.alt = "Exit";
             exitIcon.style.width = "16px";
             exitIcon.style.height = "16px";
-
             logoutLink.appendChild(exitIcon);
             logoutLink.appendChild(document.createTextNode(`Sign Out`));
             logoutItem.appendChild(logoutLink);
@@ -152,7 +181,6 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 menuActions.appendChild(logoutItem);
             }
-
             logoutLink.addEventListener("click", (e) => {
                 e.preventDefault();
                 efetuarLogout();
@@ -160,21 +188,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function processarLogin(ntid, nomeCompleto, departamento) {
-        const sanitizedNtid = ntid.replace(/[^a-zA-Z0-9]/g, "").toUpperCase();
-        const userData = { ntid: sanitizedNtid, nomeCompleto, departamento };
-
-        try {
-            localStorage.setItem("executive_visit_session", JSON.stringify(userData));
-            window.location.href = "index.html"; 
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
     function efetuarLogout() {
         try {
+            // Remove as chaves antes de redirecionar para evitar redirecionamento circular
             localStorage.removeItem("executive_visit_session");
+            localStorage.removeItem("token_seguro");
         } finally {
             window.location.href = "auth.html";
         }
@@ -194,7 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const tbody = document.querySelector(".schedule-table tbody");
         if (!tbody) return;
 
-        tbody.innerHTML = ""; // Limpa a tabela anterior
+        tbody.innerHTML = ""; 
 
         const diaEncontrado = dadosAgenda.days.find(d => d.id === diaKey);
 
@@ -202,12 +220,10 @@ document.addEventListener("DOMContentLoaded", () => {
             diaEncontrado.events.forEach(item => {
                 const tr = document.createElement("tr");
 
-                // Coluna de Tempo
                 const tdTime = document.createElement("td");
                 tdTime.className = "time-col";
                 tdTime.textContent = item.time;
 
-                // Coluna de Evento
                 const tdEvent = document.createElement("td");
                 const strong = document.createElement("strong");
                 strong.textContent = item.title; 
@@ -219,11 +235,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 tdEvent.appendChild(br);
                 tdEvent.appendChild(small);
 
-                // Coluna de Localização
                 const tdLoc = document.createElement("td");
                 tdLoc.innerHTML = item.location;
 
-                // Coluna de Responsável (Host)
                 const tdHost = document.createElement("td");
                 tdHost.textContent = item.host;
 
@@ -237,7 +251,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Função de clique global para alternar as abas no HTML original
     window.showDay = function(event, dayId) {
         const tablinks = document.querySelectorAll(".day-tab");
         tablinks.forEach(t => t.classList.remove("active"));
@@ -245,9 +258,6 @@ document.addEventListener("DOMContentLoaded", () => {
         renderizarDia(dayId);
     };
 
-    // ==========================================================================
-    // SINTONIA DO RELÓGIO (BRASIL E ALEMANHA)
-    // ==========================================================================
     function atualizarRelogios() {
         const ago = new Date();
         const brazilClock = document.getElementById("brazil-clock");
@@ -274,10 +284,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (btnGetLocation && locationStatus) {
         btnGetLocation.addEventListener("click", () => {
-            locationStatus.textContent = "Buscando satélites e dados de rede local... 📡";
+            locationStatus.textContent = "Buscando satélites e dados de rede local...";
             
             if (!navigator.geolocation) {
-                locationStatus.textContent = "❌ Geolocalização não é suportada por este dispositivo.";
+                locationStatus.textContent = "Geolocalização não é suportada por este dispositivo.";
                 return;
             }
 
@@ -303,7 +313,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 },
                 (error) => {
                     console.warn("Erro ao detectar geolocalização:", error);
-                    locationStatus.textContent = "❌ Por favor, ative e conceda permissão de GPS para validar sua conexão.";
+                    locationStatus.textContent = "Por favor, ative e conceda permissão de GPS para validar sua conexão.";
                 },
                 geoOptions
             );
@@ -312,45 +322,85 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ================== CONTROLE DE FLUXOS DA PÁGINA ==================
     if (isAuthPage) {
-        if (localStorage.getItem("executive_visit_session")) {
-            window.location.href = "index.html";
+        // Correção de loop circular no login
+        const sessaoAtiva = localStorage.getItem("executive_visit_session");
+        if (sessaoAtiva) {
+            try {
+                const dados = JSON.parse(sessaoAtiva);
+                if (dados && dados.ntid) {
+                    window.location.href = "index.html";
+                } else {
+                    localStorage.removeItem("executive_visit_session");
+                }
+            } catch (e) {
+                localStorage.removeItem("executive_visit_session");
+            }
         }
 
-        if (btnSSO) {
-            btnSSO.addEventListener("click", () => {
-                const randomId = Math.floor(100000 + Math.random() * 900000); 
-                processarLogin(`USER${randomId}`, "Bosch Collaborator", "CaP/ETS3");
-            });
-        }
-
+        // Formulário de Login Manual com Validação Rígida contra o Backend Python
         if (loginForm) {
-            loginForm.addEventListener("submit", (e) => {
-                e.preventDefault();
+            loginForm.addEventListener("submit", async (e) => {
+                e.preventDefault(); 
+
                 const ntidInput = document.getElementById("username");
                 const passInput = document.getElementById("password");
+                const loadingOverlay = document.getElementById("loadingOverlay");
+                const loadingText = document.getElementById("loadingText");
 
                 if (!ntidInput || !passInput) return;
 
                 const ntid = ntidInput.value.trim().toUpperCase();
+                const password = passInput.value;
 
                 if (ntid.length < 5) {
                     alert("Insira um NTID válido para continuar.");
                     return;
                 }
 
-                // DICIONÁRIO DINÂMICO DE USUÁRIOS REAIS BOSCH
-                const usuariosBosch = {
-                    "IGA2CA": { nome: "Gabriel Silva", depto: "CaP/ETS3" },
-                    "ABC1DE": { nome: "Mariana Costa", depto: "CI/DA" },
-                    "XYZ9AA": { nome: "João Pedro", depto: "GS/OSD" }
-                };
+                if (password.length === 0) {
+                    alert("Por favor, insira sua senha corporativa.");
+                    return;
+                }
 
-                const colaboradorLogado = usuariosBosch[ntid] || { 
-                    nome: `Colaborador Bosch (${ntid})`, 
-                    depto: "Bosch General" 
-                };
+                // ATIVA A TELA DE LOADING
+                if (loadingOverlay) {
+                    loadingOverlay.classList.add("active");
+                }
 
-                processarLogin(ntid, colaboradorLogado.nome, colaboradorLogado.depto);
+                try {
+                    if (loadingText) loadingText.textContent = "Verificando certificado de segurança e túnel VPN...";
+                    await new Promise(resolve => setTimeout(resolve, 800));
+
+                    if (loadingText) loadingText.textContent = `Validando credenciais de rede para o usuário ${ntid}.`;
+
+                    // Envia a requisição para a API do Python
+                    const response = await fetch('http://localhost:3000/api/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ username: ntid, password: password })
+                    });
+
+                    const resultado = await response.json();
+
+                    if (response.ok && resultado.sucesso) {
+                        if (loadingText) loadingText.textContent = "Acesso autorizado! Carregando painel corporativo...";
+                        await new Promise(resolve => setTimeout(resolve, 500));
+
+                        localStorage.setItem("executive_visit_session", JSON.stringify(resultado.usuario));
+                        localStorage.setItem("token_seguro", resultado.token);
+                        
+                        window.location.href = "index.html"; 
+                    } else {
+                        if (loadingOverlay) loadingOverlay.classList.remove("active");
+                        alert(resultado.erro || "Falha na autenticação corporativa.");
+                    }
+                } catch (error) {
+                    if (loadingOverlay) loadingOverlay.classList.remove("active");
+                    console.error("Erro crítico na chamada de autenticação:", error);
+                    alert("Erro de Conexão: Não foi possível conectar ao servidor de segurança. Verifique se o seu backend Python está rodando na porta 3000.");
+                }
             });
         }
     } else {
@@ -358,7 +408,6 @@ document.addEventListener("DOMContentLoaded", () => {
         atualizarRelogios();
         setInterval(atualizarRelogios, 1000);
         
-        // Garante que o Dia 1 carregue na abertura
         if (document.querySelector(".schedule-table")) {
             renderizarDia("day-1-content");
         }
