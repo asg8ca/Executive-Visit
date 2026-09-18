@@ -23,8 +23,11 @@
             <!-- HEADER CONTROLS -->
             <div class="o-minimal-header__controls">
                 <a href="index.html" class="home-button">Home</a>
-
-                <button class="o-minimal-header__toggle" id="menuToggle" aria-label="Open Navigation Menu" aria-expanded="false" onclick="toggleNavMenu()">
+                <!-- Mantemos apenas a classe logout-button dedicada -->
+                <button id="btn-logout-header" class="logout-button" aria-label="Sign Out">
+                    <img src="Assent/icons/EXIT.svg" alt="Sign Out" class="logout-icon-svg">
+                </button>
+                <button class="o-minimal-header__toggle" id="menuToggle" aria-label="Open Navigation Menu" aria-expanded="false">
                     <span class="hamburger-icon" aria-hidden="true">
                         <span class="hamburger-bar"></span>
                         <span class="hamburger-bar"></span>
@@ -32,6 +35,7 @@
                     </span>
                 </button>
             </div>
+
 
             <!-- NAVIGATION ACTIONS -->
             <ul class="o-minimal-header__actions" id="navActions">

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bosch Brazil - Executive Visit Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-body">
+
+    <!-- Supergraphic de fundo em alta resolução -->
+    <div class="auth-background-graphic"></div>
+
+    <div class="auth-container">
+        <div class="card auth-card">
+            <!-- Barra Supergraphic integrada no topo do card -->
+            <div class="supergraphic"></div>
+
+            
+            <p class="info-text">
+                Acesse usando o seu <strong>NTID Bosch</strong> (Ex: IGA2CA) e a sua <strong>senha de rede do notebook corporativo</strong>.
+            </p>
+
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="username">User ID (NTID)</label>
+                    <input type="text" id="username" placeholder="Ex: IGA2CA" required autocomplete="username">
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Digite a senha do notebook" required autocomplete="current-password">
+                </div>
+
+                <button type="submit" class="bosch-btn-primary">Sign In</button>
+            </form>
+
+            <div class="divider">ou</div>
+
+            <button id="btn-sso" class="btn-secondary">
+                Entrar com Login Automático (SSO)
+            </button>
+        </div>
+    </div>
+
+    <!-- Script único de autenticação e navegação -->
+    <script src="script.js"></script>
+</body>
+</html>

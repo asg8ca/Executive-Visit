@@ -1,5 +1,5 @@
 /* ==========================================================================
-   BOSCH DESIGN SYSTEM - EXECUTIVE VISIT PORTFOLIO (RESPONSIVE)
+   BOSCH DESIGN SYSTEM - MA/BD EXECUTIVE VISIT SCHEDULE (RESPONSIVE)
    ========================================================================== */
 
 :root {
@@ -21,9 +21,142 @@ body {
   background-color: var(--bosch-gray-light);
   color: var(--bosch-black);
   scroll-behavior: smooth;
+  min-height: 100vh;
 }
 
-/* --- HEADER & SUPERGRAPHIC --- */
+/* ==========================================================================
+   INTERFACES DE AUTENTICAÇÃO E LOGIN (ESTRUTURA INTEGRADA SEM FUNDO BRANCO)
+   ========================================================================== */
+
+.auth-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  background-color: #1f1f1f !important;
+  position: relative;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.auth-background-graphic {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('assent/img/Bosch_Supergraphic_RGB.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.85;
+  z-index: 1;
+}
+
+.auth-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 440px;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-card {
+  background: rgba(255, 255, 255, 0.90) !important; /* Opacidade aumentada para 90% para contraste perfeito */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35) !important;
+  border-radius: 4px;
+  padding: 35px 30px;
+  position: relative;
+  overflow: hidden;
+  border-top: 4px solid var(--bosch-blue);
+  width: 100%;
+}
+
+.info-text {
+  background-color: var(--bosch-blue-light);
+  border-left: 4px solid var(--bosch-blue);
+  padding: 12px 16px;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  margin-bottom: 25px;
+  color: var(--bosch-black) !important;
+  font-weight: 600;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.input-group label {
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: var(--bosch-black) !important;
+}
+
+.input-group input {
+  padding: 12px;
+  border: 1.5px solid var(--bosch-gray-border);
+  border-radius: 4px;
+  font-size: 15px;
+  outline: none;
+  background-color: #ffffff !important; /* Fundo branco puro para digitação segura */
+  color: #000000 !important;
+  font-weight: 600;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-group input:focus {
+  border-color: var(--bosch-blue);
+  box-shadow: 0 0 0 3px rgba(0, 123, 192, 0.25);
+}
+
+.divider {
+  text-align: center;
+  margin: 18px 0;
+  color: var(--bosch-gray-text);
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.btn-secondary {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--bosch-blue);
+  color: var(--bosch-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 100%;
+}
+
+.btn-secondary:hover {
+  background-color: var(--bosch-blue-light);
+}
+
+/* ==========================================================================
+   --- HEADER & SUPERGRAPHIC ---
+   ========================================================================== */
 .frontend-kit__header {
   background-color: var(--bosch-white);
   position: sticky;
@@ -41,11 +174,22 @@ body {
   background-repeat: no-repeat;
 }
 
+.supergraphic {
+  height: 4px;
+  width: 100%;
+  background-image: url('assent/img/super.svg');
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .o-minimal-header__top {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between; 
+  justify-content: space-between;
   padding: 0.75rem 2.5rem;
 }
 
@@ -74,6 +218,42 @@ body {
 .home-button:hover {
   background-color: var(--bosch-blue);
   color: var(--bosch-white);
+}
+
+/* --- ESTILIZAÇÃO DO BOTÃO LOGOUT NO CABEÇALHO COM ÍCONE CENTRALIZADO --- */
+.logout-button {
+  background-color: var(--bosch-white) !important;
+  border: 1px solid var(--bosch-red) !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 36px !important;    /* Proporção perfeita para acompanhar o tamanho do Home */
+  height: 36px !important;   /* Perfeitamente quadrado */
+  padding: 0 !important;
+  margin: 0 0.5rem 0 0 !important; /* Margem direita para não encostar no sanduíche */
+  cursor: pointer;
+  border-radius: 4px;
+  box-sizing: border-box !important;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.logout-icon-svg {
+  width: 18px !important;   /* Tamanho do ícone interno ajustado */
+  height: 18px !important;  /* Mantém proporção quadrada */
+  display: block;
+  margin: 0 !important;
+  padding: 0 !important;
+  filter: invert(13%) sepia(95%) saturate(7435%) hue-rotate(354deg) brightness(91%) contrast(114%); /* Vermelho Bosch */
+  transition: filter 0.2s;
+}
+
+.logout-button:hover {
+  background-color: var(--bosch-red) !important;
+  border-color: var(--bosch-red) !important;
+}
+
+.logout-button:hover .logout-icon-svg {
+  filter: invert(100%) sepia(100%) saturate(0%) brightness(200%) contrast(100%); /* Transforma em branco no hover */
 }
 
 /* --- BOTÃO MENU HAMBÚRGUER --- */
@@ -196,7 +376,9 @@ body {
   margin-top: 0.25rem;
 }
 
-/* --- BANNER --- */
+/* ==========================================================================
+   --- BANNER ---
+   ========================================================================== */
 .executive-banner {
   position: relative;
   background-color: var(--bosch-black);
@@ -243,7 +425,9 @@ body {
   margin: 0;
 }
 
-/* --- SEÇÕES E CONTEÚDO --- */
+/* ==========================================================================
+   --- SEÇÕES E CONTEÚDO ---
+   ========================================================================== */
 .main-content {
   padding: 1rem 0;
 }
@@ -266,7 +450,9 @@ body {
 .section-title h2 { font-size: 2rem; margin: 0 0 0.5rem 0; font-weight: 700; }
 .section-title p { color: var(--bosch-gray-text); margin: 0; font-size: 1.1rem; }
 
-/* --- PAINEL DE FUSO HORÁRIO E GEOLOCALIZAÇÃO --- */
+/* ==========================================================================
+   --- PAINEL DE FUSO HORÁRIO E GEOLOCALIZAÇÃO ---
+   ========================================================================== */
 .dashboard-panel {
   display: flex;
   flex-direction: column;
@@ -285,6 +471,7 @@ body {
   padding: 1.5rem;
   text-align: center;
   border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
 }
 
 .clock-card__label {
@@ -316,6 +503,7 @@ body {
   padding: 1.5rem;
   text-align: center;
   border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
 }
 
 .geo-panel h3 {
@@ -330,6 +518,7 @@ body {
   line-height: 1.5;
 }
 
+/* Botões do Hub de Ação */
 .bosch-btn-primary {
   background-color: var(--bosch-blue);
   color: var(--bosch-white);
@@ -340,15 +529,19 @@ body {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s;
+  width: 100%;
 }
 
 .bosch-btn-primary:hover {
   background-color: var(--bosch-blue-dark);
 }
 
-/* --- ABAS DE DIA --- */
+/* ==========================================================================
+   --- ABAS DE DIA ---
+   ========================================================================== */
 .day-selector {
   display: flex;
+  justify-content: center; /* Alinha os itens no centro horizontal */
   gap: 0.5rem;
   margin-bottom: 2rem;
   flex-wrap: wrap;
@@ -371,59 +564,187 @@ body {
   border-color: var(--bosch-blue);
 }
 
-/* --- TABELA DA AGENDA --- */
+/* ==========================================================================
+   --- TABELA DA AGENDA (DESKTOP) ---
+   ========================================================================== */
 .schedule-table-wrapper {
   background-color: var(--bosch-white);
   border: 1px solid var(--bosch-gray-border);
   overflow-x: auto;
 }
 
-.schedule-table { width: 100%; border-collapse: collapse; text-align: left; }
-.schedule-table th, .schedule-table td { padding: 1.25rem; border-bottom: 1px solid var(--bosch-gray-border); vertical-align: top; }
-.schedule-table tr:last-child td { border-bottom: none; }
-.schedule-table th { background-color: var(--bosch-gray-light); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; }
-.time-col { font-weight: 700; color: var(--bosch-blue); white-space: nowrap; }
-.schedule-table td small { display: block; margin-top: 0.25rem; color: var(--bosch-gray-text); font-size: 0.85rem; }
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  background-color: var(--bosch-white);
+}
 
-/* Linhas 100% brancas, sem qualquer barra lateral azul */
-.schedule-table tbody tr {
+.schedule-table th, .schedule-table td {
+  padding: 1.25rem;
+  border-bottom: 1px solid var(--bosch-gray-border);
+  vertical-align: top;
+  background-color: var(--bosch-white);
+}
+
+.schedule-table tr:last-child td {
+  border-bottom: none;
+}
+
+.schedule-table th {
+  background-color: var(--bosch-gray-light);
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.time-col {
+  font-weight: 700;
+  color: var(--bosch-blue);
+  white-space: nowrap;
+}
+
+.schedule-table td small {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--bosch-gray-text);
+  font-size: 0.85rem;
+}
+
+.schedule-table tr.highlight-row {
   background-color: var(--bosch-white) !important;
+  border-left: none !important;
 }
 
-.schedule-table tr.highlight-row { 
-  background-color: var(--bosch-white) !important; 
-  border-left: none !important; 
+.schedule-table tr.highlight-row td {
+  background-color: var(--bosch-white) !important;
+  border-left: none !important;
 }
 
-/* --- GRADES DE LOGÍSTICA E CONTATOS --- */
+/* ==========================================================================
+   --- GRADES DE LOGÍSTICA E CONTATOS ---
+   ========================================================================== */
 .logistics-grid, .hosts-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
 }
 
-.logistics-card, .host-profile-card { border: 1px solid var(--bosch-gray-border); padding: 1.5rem; }
-.logistics-card { background-color: var(--bosch-white); display: flex; flex-direction: column; }
-.logistics-category { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--bosch-blue); letter-spacing: 0.05em; margin-bottom: 0.5rem; }
-.logistics-card h3 { margin: 0 0 0.75rem 0; font-size: 1.2rem; }
-.logistics-card p { color: var(--bosch-gray-text); line-height: 1.5; margin: 0 0 1.5rem 0; flex-grow: 1; font-size: 0.9rem; }
-.bosch-btn-secondary-link { color: var(--bosch-blue); text-decoration: none; font-weight: 700; font-size: 0.9rem; }
-.bosch-btn-secondary-link:hover { text-decoration: underline; color: var(--bosch-blue-dark); }
+.logistics-card, .host-profile-card {
+  border: 1px solid var(--bosch-gray-border);
+  padding: 1.5rem;
+}
 
-.host-profile-card { background-color: var(--bosch-white); display: flex; align-items: center; gap: 1.5rem; }
-.host-avatar { background-color: var(--bosch-blue); color: var(--bosch-white); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.25rem; border-radius: 50%; flex-shrink: 0; }
-.host-details h3 { margin: 0 0 0.25rem 0; font-size: 1.15rem; }
-.host-role { color: var(--bosch-black); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; display: block; margin-bottom: 0.5rem; }
-.host-contact { margin: 0; font-size: 0.85rem; color: var(--bosch-gray-text); line-height: 1.6; }
-.host-link { color: var(--bosch-blue); text-decoration: none; font-weight: 600; transition: color 0.2s; }
-.host-link:hover { text-decoration: underline; color: var(--bosch-blue-dark); }
-.host-whatsapp-link { color: #128c7e; }
-.host-whatsapp-link:hover { color: #075e54; }
+.logistics-card {
+  background-color: var(--bosch-white);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.logistics-category {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--bosch-blue);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.logistics-card h3 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.2rem;
+}
+
+.logistics-card p {
+  color: var(--bosch-gray-text);
+  line-height: 1.5;
+  margin: 0 0 1.5rem 0;
+  flex-grow: 1;
+  font-size: 0.9rem;
+}
+
+.bosch-btn-secondary-link {
+  color: var(--bosch-blue);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.bosch-btn-secondary-link:hover {
+  text-decoration: underline;
+  color: var(--bosch-blue-dark);
+}
+
+.host-profile-card {
+  background-color: var(--bosch-white);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.host-avatar {
+  background-color: var(--bosch-blue);
+  color: var(--bosch-white);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.25rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.host-details h3 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.15rem;
+}
+
+.host-role {
+  color: var(--bosch-black);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.host-contact {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--bosch-gray-text);
+  line-height: 1.6;
+}
+
+.host-link {
+  color: var(--bosch-blue);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.host-link:hover {
+  text-decoration: underline;
+  color: var(--bosch-blue-dark);
+}
+
+.host-whatsapp-link {
+  color: #128c7e;
+}
+
+.host-whatsapp-link:hover {
+  color: #075e54;
+}
 
 #bosch-logo-text { fill: var(--bosch-red); }
 #bosch-logo-anker { fill: var(--bosch-black); }
 
-/* --- BOTÃO DE RETORNO (BACK TO VISIT SCHEDULE) --- */
+/* ==========================================================================
+   --- BOTÃO DE RETORNO RESPONSIVO ---
+   ========================================================================== */
 .back-navigation-container {
   margin-top: 3.5rem;
   margin-bottom: 2rem;
@@ -458,7 +779,9 @@ body {
   transform: translateY(-2px);
 }
 
-/* --- GRADE DE CARDS COM FOTOS (LOCATION.HTML / SALAS.HTML) --- */
+/* ==========================================================================
+   --- GRADE DE CARDS COM FOTOS (LOCATION.HTML) ---
+   ========================================================================== */
 .places-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -558,7 +881,9 @@ body {
   margin-top: auto;
 }
 
-/* --- FOOTER OFICIAL BOSCH --- */
+/* ==========================================================================
+   --- FOOTER OFICIAL BOSCH ---
+   ========================================================================== */
 .o-footer.-minimal {
   background-color: var(--bosch-white);
   padding: 2.5rem 0 2rem 0;
@@ -615,7 +940,9 @@ body {
   margin-top: 0.5rem;
 }
 
-/* --- RESPONSIVIDADE MOBILE & CARDS DA AGENDA --- */
+/* ==========================================================================
+   --- RESPONSIVIDADE MOBILE ---
+   ========================================================================== */
 @media (max-width: 992px) {
   .o-minimal-header__top, .section-container, .executive-banner, .e-container {
     padding-left: 1.5rem;
@@ -638,15 +965,28 @@ body {
   .host-profile-card { flex-direction: column; text-align: center; }
   .o-footer__links { flex-direction: column; gap: 0.75rem; }
 
-  /* CONVERSÃO DA TABELA EM CARDS INDIVIDUAIS NO MOBILE */
+  .back-navigation-container {
+    margin-top: 2.5rem;
+    padding: 0 1rem;
+  }
+  .back-visit-btn {
+    width: 100%;
+    font-size: 0.95rem;
+    padding: 0.85rem 1rem;
+    text-align: center;
+  }
+
+  /* --- TRANSFORMAÇÃO DA AGENDA EM CARDS NO MOBILE --- */
   .schedule-table-wrapper {
-    background: transparent !important;
-    border: none !important;
+    background-color: transparent;
+    border: none;
+    overflow: visible;
   }
 
   .schedule-table {
     display: block;
     width: 100%;
+    background: transparent;
   }
 
   .schedule-table thead {
@@ -656,10 +996,11 @@ body {
   .schedule-table tbody {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 1rem;
     width: 100%;
   }
 
+  /* Cada linha da tabela vira um card moderno e independente */
   .schedule-table tbody tr {
     display: flex;
     flex-direction: column;
@@ -672,62 +1013,105 @@ body {
     width: 100%;
   }
 
-  .schedule-table tbody td {
-    display: block;
-    padding: 0.45rem 0;
-    border-bottom: none !important;
+  .schedule-table tbody tr.highlight-row {
+    background-color: var(--bosch-white) !important;
+    border-left: 1px solid var(--bosch-gray-border) !important;
   }
 
+  .schedule-table tbody td {
+    display: block;
+    padding: 0.35rem 0;
+    border-bottom: none;
+    background-color: transparent !important;
+    font-size: 0.95rem;
+  }
+
+  /* Horário destacado no topo do card */
   .schedule-table tbody td.time-col {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     font-weight: 800;
     color: var(--bosch-blue);
-    border-bottom: 1px solid var(--bosch-gray-border) !important;
-    padding-bottom: 0.65rem;
+    padding-bottom: 0.5rem;
     margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--bosch-gray-border);
+  }
+
+  /* Evento / Título principal */
+  .schedule-table tbody td:nth-child(2) {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    padding-bottom: 0.5rem;
   }
 
   .schedule-table tbody td:nth-child(2) strong {
-    font-size: 1.05rem;
-    display: block;
     color: var(--bosch-black);
+    display: block;
     margin-bottom: 0.25rem;
   }
 
+  .schedule-table tbody td:nth-child(2) small {
+    font-size: 0.88rem;
+    color: var(--bosch-gray-text);
+    line-height: 1.45;
+  }
+
+  /* Localização com ícone SVG (map.svg) */
+  .schedule-table tbody td:nth-child(3) {
+    font-size: 0.88rem;
+    color: var(--bosch-black);
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+  }
+
   .schedule-table tbody td:nth-child(3)::before {
-    content: "Location: ";
+    content: "Location:";
+    display: inline-flex;
+    align-items: center;
+    padding-left: 1.35rem;
+    background-image: url('Assent/icons/map.svg');
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 15px 15px;
     font-weight: 700;
     color: var(--bosch-gray-text);
-    display: inline-block;
-    background: url('assent/icons/map.svg') no-repeat left center;
-    background-size: 15px 15px;
-    padding-left: 1.35rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  /* Responsável / Host com ícone SVG (people.svg) */
+  .schedule-table tbody td:nth-child(4) {
+    font-size: 0.88rem;
+    color: var(--bosch-black);
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-top: 0.2rem;
+    flex-wrap: wrap;
   }
 
   .schedule-table tbody td:nth-child(4)::before {
-    content: "Host / Lead: ";
+    content: "Host / Lead:";
+    display: inline-flex;
+    align-items: center;
+    padding-left: 1.35rem;
+    background-image: url('Assent/icons/people.svg');
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 15px 15px;
     font-weight: 700;
     color: var(--bosch-gray-text);
-    display: inline-block;
-    background: url('assent/icons/people.svg') no-repeat left center;
-    background-size: 15px 15px;
-    padding-left: 1.35rem;
-  }
-
-  .back-navigation-container {
-    margin-top: 2.5rem;
-    padding: 0 1rem;
-  }
-
-  .back-visit-btn {
-    width: 100%;
-    font-size: 0.95rem;
-    padding: 0.85rem 1rem;
-    text-align: center;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    flex-shrink: 0;
   }
 }
 
 @media (max-width: 480px) {
   .day-selector { grid-template-columns: 1fr; }
-  .schedule-table tbody tr { padding: 1rem; }
+  .schedule-table tbody tr {
+    padding: 1rem;
+  }
 }

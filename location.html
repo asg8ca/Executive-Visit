@@ -5,51 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bosch Brazil - Logistics & Locations</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        .category-filter-bar {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-        .filter-btn {
-            background-color: var(--bosch-white);
-            border: 1px solid var(--bosch-gray-border);
-            color: var(--bosch-black);
-            padding: 0.65rem 1.25rem;
-            font-weight: 600;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border-radius: 4px;
-        }
-        .filter-btn:hover, .filter-btn.active {
-            background-color: var(--bosch-blue);
-            color: var(--bosch-white);
-            border-color: var(--bosch-blue);
-        }
-        .location-section {
-            margin-bottom: 3rem;
-            scroll-margin-top: 5rem;
-        }
-        .location-section-header {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1.25rem;
-            border-bottom: 2px solid var(--bosch-blue);
-            padding-bottom: 0.5rem;
-        }
-        .location-section-header h3 {
-            margin: 0;
-            font-size: 1.4rem;
-            color: var(--bosch-black);
-        }
-        .location-section-header span {
-            font-size: 0.85rem;
-            color: var(--bosch-gray-text);
-        }
-    </style>
 </head>
 <body>
 
@@ -67,7 +22,11 @@
 
             <div class="o-minimal-header__controls">
                 <a href="index.html" class="home-button">Home</a>
-                <button class="o-minimal-header__toggle" id="menuToggle" aria-label="Open Navigation Menu" aria-expanded="false" onclick="toggleNavMenu()">
+                <!-- Mantemos apenas a classe logout-button dedicada -->
+                <button id="btn-logout-header" class="logout-button" aria-label="Sign Out">
+                    <img src="Assent/icons/EXIT.svg" alt="Sign Out" class="logout-icon-svg">
+                </button>
+                <button class="o-minimal-header__toggle" id="menuToggle" aria-label="Open Navigation Menu" aria-expanded="false">
                     <span class="hamburger-icon" aria-hidden="true">
                         <span class="hamburger-bar"></span>
                         <span class="hamburger-bar"></span>
@@ -75,6 +34,7 @@
                     </span>
                 </button>
             </div>
+
 
             <ul class="o-minimal-header__actions" id="navActions">
                 <li><a href="index.html#schedule" class="frontend-kit__header__link" onclick="closeNavMenu()">Schedule</a></li>
