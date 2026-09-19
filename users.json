@@ -1,0 +1,17 @@
+{
+    "authorized_users": [
+	{ ntid: "CVE1CA", nome: "Vedovotto Claudio",	depto: "MA/BDO6-LA"},
+	{ ntid: "JUG1CA", nome: "Juliani Gabriela",	depto: "MA/BDO6-LA"},
+	{ ntid: "LEE5CA", nome: "Lima Debora",		depto: "MA/BDO6-LA"},
+	{ ntid: "STI1CA", nome: "Felix Stefany",	depto: "MA/BDO6-LA"},
+	{ ntid: "AMC8FE", nome: "Amann Carsten",	depto: "MA/BD"},
+	{ ntid: "MH82KA", nome: "Maier Hanne",		depto: "MA/BD"},
+	{ ntid: "ATO9CA", nome: "Toni Andre",		depto: "MA/COR-LA"},
+	{ ntid: "ESN5CA", nome: "Espricigo Anderson",	depto: "MA/COR-LA"},
+	{ ntid: "GOI1CA", nome: "Ortolan Giulia",	depto: "MA/COR-LA"},
+	{ ntid: "HIR5KA", nome: "Hilbert Robert",	depto: "MA/RP-LA"},
+	{ ntid: "TEA5CA", nome: "Eckardt Tania",	depto: "MA/RP-LA"},
+	{ ntid: "IGA2CA", nome: "Silva Gabriel",	depto: "CaP/ETS3"},
+	{ ntid: "ASG8CA", nome: "Santos Gabriel",	depto: "CaP/ETS2 - MA/BDO6-LA"}
+    ]
+}
